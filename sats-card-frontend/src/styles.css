@@ -1,0 +1,130 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+:root{
+  --bg:#07080C;
+  --surface:#12141C;
+  --elevated:#1A1D27;
+  --line: rgba(255,255,255,0.08);
+  --ink:#F3F4F7;
+  --ink-soft:#A7ADBB;
+  --ink-muted:#6E7383;
+  --amber:#FFB020;
+  --lime:#C8FF4D;
+  --success:#34D399;
+  --danger:#FF5D5D;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: 'Manrope', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection{
+  background: rgba(200,255,77,0.3);
+  color: #07080C;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar{ width:10px; height:10px; }
+::-webkit-scrollbar-track{ background: var(--bg); }
+::-webkit-scrollbar-thumb{ background: #23262F; border-radius: 999px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover{ background:#31353f; }
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* ===== Typography Scale (used across pages as heading-1..4) ===== */
+@layer components {
+  .heading-1{
+    @apply font-display font-bold tracking-tight text-4xl sm:text-5xl md:text-6xl leading-[1.05];
+  }
+  .heading-2{
+    @apply font-display font-bold tracking-tight text-3xl sm:text-4xl leading-tight;
+  }
+  .heading-3{
+    @apply font-display font-semibold tracking-tight text-xl sm:text-2xl leading-snug;
+  }
+  .heading-4{
+    @apply font-display font-semibold tracking-tight text-lg leading-snug;
+  }
+
+  /* Gradient text accent for emphasis words */
+  .text-gradient{
+    @apply bg-amber-lime bg-clip-text text-transparent;
+  }
+
+  /* Reusable "panel" surface used for cards/sections across pages */
+  .panel{
+    @apply bg-surface border border-line rounded-2xl;
+  }
+  .panel-elevated{
+    @apply bg-elevated border border-line rounded-2xl shadow-card;
+  }
+
+  /* Background grid texture wrapper */
+  .bg-noise-grid{
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(255,176,32,0.10) 0%, transparent 45%),
+      radial-gradient(circle at 85% 0%, rgba(200,255,77,0.08) 0%, transparent 40%),
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: auto, auto, 44px 44px, 44px 44px;
+  }
+
+  .divider{
+    @apply border-t border-line;
+  }
+}
+
+/* Focus rings across form elements for a techy but accessible feel */
+input:focus, select:focus, textarea:focus, button:focus-visible{
+  outline: none;
+}
+input:focus, select:focus, textarea:focus{
+  box-shadow: 0 0 0 3px rgba(255,176,32,0.25);
+  border-color: var(--amber) !important;
+}
+
+/* Utility for mono figures (balances, hashes) */
+.font-figures{
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Lightning bolt glyph animation used in headers/logo */
+.bolt-icon{
+  filter: drop-shadow(0 0 8px rgba(255,176,32,0.6));
+}
+
+@keyframes fadeInUp{
+  from{ opacity:0; transform: translateY(20px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+.animate-fadeInUp{ animation: fadeInUp 0.7s ease-out both; }
+
+/* Marquee strip for landing "trust bar" */
+.marquee-track{
+  display:flex;
+  width: max-content;
+  animation: marquee 24s linear infinite;
+}
+
+@media (max-width: 768px){
+  .heading-1{ font-size: 2.25rem; }
+}

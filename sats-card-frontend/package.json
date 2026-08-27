@@ -1,0 +1,32 @@
+{
+  "name": "sats-card-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.5.4",
+    "framer-motion": "^13.1.1",
+    "lucide-react": "^1.34.0",
+    "postcss": "^8.5.26",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.18.2",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.6",
+    "@vitejs/plugin-react": "^4.0.0",
+    "jsdom": "^29.1.1",
+    "vite": "^5.0.0",
+    "vitest": "^4.1.11"
+  }
+}
