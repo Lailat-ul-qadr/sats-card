@@ -61,6 +61,18 @@ class Deposit(Base):
         nullable=True
     )
 
+class CardPayment(Base):
+    __tablename__ = "card_payments"
+
+    id = Column(Integer, primary_key=True, index=True)
+    payment_hash = Column(String, unique=True, nullable=False)
+    amount_sats = Column(Integer, nullable=False)
+    status = Column(String, nullable=False)
+    created_at = Column(
+        DateTime,
+        default=datetime.utcnow,
+        nullable=True
+    )
 
 
 Base.metadata.create_all(bind=engine)
@@ -166,6 +178,26 @@ def run_lncli(container: str, command: list):
 
     except json.JSONDecodeError:
         raise Exception("Invalid JSON returned by lncli")
+def run_lncli_command(container: str, command: list):
+
+    result = subprocess.run(
+        [
+            "docker",
+            "exec",
+            container,
+            "lncli",
+            "--lnddir=/home/lnd/.lnd",
+            "--network=regtest",
+            *command
+        ],
+        capture_output=True,
+        text=True
+    )
+
+    if result.returncode != 0:
+        raise Exception(result.stderr.strip())
+
+    return result.stdout.strip()
 
 
 # ============================================================
@@ -533,7 +565,114 @@ def deposit_to_card(payment_id: str):
     finally:
 
         db.close()
+# ============================================================
+# PAY LIGHTNING INVOICE FROM SATS CARD
+# ============================================================
 
+@app.post("/api/card_payment")
+def card_payment(request: PaymentRequest):
+
+    db = SessionLocal()
+
+    try:
+
+        # ----------------------------------------------------
+        # Get the card
+        # ----------------------------------------------------
+
+        card = db.query(Card).filter(
+            Card.card_number == "SATSCARD-001"
+        ).first()
+
+        if card is None:
+            raise HTTPException(
+                status_code=404,
+                detail="Card not found"
+            )
+
+        # ----------------------------------------------------
+        # Decode the invoice
+        # ----------------------------------------------------
+
+        invoice = run_lncli(
+            BOB_CONTAINER,
+            [
+                "decodepayreq",
+                request.payment_request
+            ]
+        )
+
+        amount = int(invoice["num_satoshis"])
+        payment_hash = invoice["payment_hash"]
+
+        # ----------------------------------------------------
+        # Check card balance
+        # ----------------------------------------------------
+
+        if card.balance_sats < amount:
+            raise HTTPException(
+                status_code=400,
+                detail="Insufficient card balance"
+            )
+               # ----------------------------------------------------
+        # Pay the Lightning invoice
+        # ----------------------------------------------------
+
+        payment_output = run_lncli_command(
+            ALICE_CONTAINER,
+            [
+                "payinvoice",
+                "--force",
+                request.payment_request
+            ]
+        )
+
+        if "Payment status: SUCCEEDED" not in payment_output:
+            raise Exception("Lightning payment failed")
+
+        # ----------------------------------------------------
+        # Deduct from card balance
+        # ----------------------------------------------------
+
+        card.balance_sats -= amount
+
+        # ----------------------------------------------------
+        # Record payment
+        # ----------------------------------------------------
+
+        card_payment = CardPayment(
+            payment_hash=payment_hash,
+            amount_sats=amount,
+            status="completed"
+        )
+
+        db.add(card_payment)
+        db.commit()
+        db.refresh(card)
+
+        return {
+            "status": "paid",
+            "payment_hash": payment_hash,
+            "amount_sats": amount,
+            "card_number": card.card_number,
+            "card_balance_sats": card.balance_sats
+        }
+
+    except HTTPException:
+        raise
+
+    except Exception as e:
+
+        db.rollback()
+
+        return {
+            "status": "error",
+            "message": str(e)
+        }
+
+    finally:
+
+        db.close()
 
 # ============================================================
 # CARD BALANCE
@@ -650,7 +789,7 @@ def payment_history():
             "message": str(e)
         }
 # ============================================================
-# SATS CARD TRANSACTION SUMMARY
+# SATS CARD TRANSACTION HISTORY
 # ============================================================
 
 @app.get("/api/transactions")
@@ -660,11 +799,13 @@ def transaction_history():
 
     try:
 
-        deposits = db.query(Deposit).order_by(
-            Deposit.id.desc()
-        ).all()
-
         transactions = []
+
+        # ----------------------------------------------------
+        # Deposits
+        # ----------------------------------------------------
+
+        deposits = db.query(Deposit).all()
 
         for deposit in deposits:
 
@@ -675,17 +816,86 @@ def transaction_history():
                     "payment_id": deposit.payment_id,
                     "amount_sats": deposit.amount_sats,
                     "status": "completed",
-                       "created_at": (
+                    "created_at": (
                         deposit.created_at.isoformat()
                         if deposit.created_at
                         else None
-    )
+                    )
                 }
             )
+
+        # ----------------------------------------------------
+        # Card payments
+        # ----------------------------------------------------
+
+        payments = db.query(CardPayment).all()
+
+        for payment in payments:
+
+            transactions.append(
+                {
+                    "transaction_id": payment.id,
+                    "type": "payment",
+                    "payment_id": payment.payment_hash,
+                    "amount_sats": payment.amount_sats,
+                    "status": payment.status,
+                    "created_at": (
+                        payment.created_at.isoformat()
+                        if payment.created_at
+                        else None
+                    )
+                }
+            )
+
+        # ----------------------------------------------------
+        # Sort newest first
+        # ----------------------------------------------------
+
+        transactions.sort(
+            key=lambda transaction: (
+                transaction["created_at"] or ""
+            ),
+            reverse=True
+        )
 
         return {
             "transactions": transactions,
             "count": len(transactions)
+        }
+
+    finally:
+
+        db.close()
+# ============================================================
+# CARD PAYMENT HISTORY
+# ============================================================
+
+@app.get("/api/card_payments")
+def card_payment_history():
+
+    db = SessionLocal()
+
+    try:
+
+        payments = db.query(CardPayment).order_by(
+            CardPayment.id.desc()
+        ).all()
+
+        return {
+            "payments": [
+                {
+                    "payment_id": payment.payment_hash,
+                    "amount_sats": payment.amount_sats,
+                    "status": payment.status,
+                    "created_at": (
+                        payment.created_at.isoformat()
+                        if payment.created_at
+                        else None
+                    )
+                }
+                for payment in payments
+            ],
+            "count": len(payments)
         }
 
     finally:
