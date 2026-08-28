@@ -80,7 +80,7 @@ class StrikeLightning:
         self,
         amount: float,
         currency: str = "USD",
-        description: str = "Sats Card Top-Up",
+        description: str = "Mobibit Top-Up",
         correlation_id: Optional[str] = None,
     ) -> LightningInvoice:
         """
@@ -167,7 +167,7 @@ class StrikeLightning:
     async def send_payment(
         self,
         bolt11_invoice: str,
-        description: str = "Sats Card BTC Transfer",
+        description: str = "Mobibit BTC Transfer",
     ) -> LightningPayment:
         """
         Send a Lightning payment to a BOLT11 invoice.

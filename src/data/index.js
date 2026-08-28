@@ -2,7 +2,7 @@
 export const mockUser = {
   id: '1',
   name: 'Demo User',
-  email: 'demo@satscardapp.com',
+  email: 'demo@mobibitafrica.com',
   phone: '+256701234567',
   country: 'Uganda',
   avatar: null,
@@ -18,7 +18,7 @@ export const mockWallet = {
 
 export const mockCard = {
   cardNumber: '4242 4242 4242 4242',
-  cardName: 'SATS CARD',
+  cardName: 'MOBIBIT AFRICA',
   holder: 'DEMO USER',
   expires: '12/25',
   lastUsed: new Date(Date.now() - 2 * 3600000),
@@ -142,7 +142,7 @@ export const mockFAQs = [
     id: '1',
     category: 'Getting Started',
     question: 'How do I create an account?',
-    answer: 'Download the Sats Card app, click "Sign Up", enter your email and phone number. You\'ll receive a verification code via SMS.',
+    answer: 'Download the Mobibit Africa app, click "Sign Up", enter your email and phone number. You\'ll receive a verification code via SMS.',
   },
   {
     id: '2',

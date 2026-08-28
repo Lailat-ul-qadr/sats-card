@@ -6,7 +6,7 @@ export default function Landing({onStart}){
       <div className="landing-bg" aria-hidden />
       <div className="landing-content">
         <div className="landing-header">
-          <h1>Sats Card</h1>
+          <h1>Mobibit Africa</h1>
           <p className="subtitle">Lightning-Powered Bitcoin Card, Funded by Mobile Money</p>
         </div>
 

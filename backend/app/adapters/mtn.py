@@ -144,7 +144,7 @@ class MTNMoMoAdapter(MobileMoneyAdapter):
                 "partyIdType": "MSISDN",
                 "partyId": request.phone_number.lstrip("+"),
             },
-            "payerMessage": request.description or "Sats Card Top-Up",
+            "payerMessage": request.description or "Mobibit Top-Up",
             "payeeNote": f"Ref: {request.reference}",
         }
 

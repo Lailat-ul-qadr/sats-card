@@ -39,7 +39,7 @@ export const authService = {
     }
     await MOCK_DELAY(1500);
     const token = 'demo_token_' + Math.random().toString(36).substr(2, 9);
-    const user = { id: '1', email: email || 'demo@satscardapp.com', name: 'Demo User', phone: phone || '+256701234567' };
+    const user = { id: '1', email: email || 'demo@mobibitafrica.com', name: 'Demo User', phone: phone || '+256701234567' };
     localStorage.setItem('auth_token', token);
     localStorage.setItem('user', JSON.stringify(user));
     return { success: true, token, user };
@@ -52,7 +52,7 @@ export const authService = {
     }
     await MOCK_DELAY(2000);
     const token = 'demo_token_' + Math.random().toString(36).substr(2, 9);
-    const user = { id: '1', email: email || 'demo@satscardapp.com', name: name || 'New User', phone };
+    const user = { id: '1', email: email || 'demo@mobibitafrica.com', name: name || 'New User', phone };
     localStorage.setItem('auth_token', token);
     localStorage.setItem('user', JSON.stringify(user));
     return { success: true, token, user };
@@ -73,7 +73,8 @@ export const walletService = {
   getBalance: async () => {
     if (USE_REAL_API) {
       const data = await walletAPI.getBalance();
-      return { sats: data.balance_sats, btc: data.balance_btc, usd: data.balance_usd };
+      const sats = data.card_balance_sats || data.balance_sats || 0;
+      return { sats, btc: sats / 100000000, usd: (sats / 39500).toFixed(2) };
     }
     await MOCK_DELAY();
     return { ...MOCK_BALANCE };
@@ -81,7 +82,7 @@ export const walletService = {
 
   getCardInfo: async () => {
     await MOCK_DELAY();
-    return { cardNumber: '4242 4242 4242 4242', cardName: 'SATS CARD', holder: 'DEMO USER', expires: '12/25' };
+    return { cardNumber: '4242 4242 4242 4242', cardName: 'MOBIBIT AFRICA', holder: 'DEMO USER', expires: '12/25' };
   },
 
   addFunds: async (amount, currency) => {
@@ -98,8 +99,15 @@ export const transactionService = {
     return [...MOCK_TXS];
   },
 
+  // Note: Backend creates transaction records on each transfer/payment.
+  // This is only used for local mock/demo mode.
   createTransaction: async (transaction) => {
-    await MOCK_DELAY(1200);
+    if (USE_REAL_API) {
+      // In real mode, the backend already creates transaction records
+      // when processing transfers. No need to create again.
+      return { ...transaction, id: 'server-created', status: 'settled', timestamp: new Date() };
+    }
+    await MOCK_DELAY(600);
     return { ...transaction, id: Math.random().toString(36).substr(2, 9), status: 'settled', timestamp: new Date() };
   },
 };
@@ -109,7 +117,7 @@ export const transactionService = {
 export const paymentService = {
   fundCard: async (phoneNumber, amount, provider) => {
     if (USE_REAL_API) {
-      const result = await paymentAPI.collect(phoneNumber, amount, 'UGX', provider, 'Sats Card Top-Up');
+      const result = await paymentAPI.collect(phoneNumber, amount, 'UGX', provider, 'Mobibit Top-Up');
       return {
         success: true,
         transactionId: result.provider_txn_id,
@@ -131,6 +139,25 @@ export const paymentService = {
   },
 
   sendBitcoin: async (recipientAddress, amount, memo) => {
+    if (USE_REAL_API) {
+      const result = await walletAPI.payInvoice(recipientAddress);
+      // Backend returns: { status, payment_hash, amount_sats, card_number, card_balance_sats }
+      if (result.status === 'paid') {
+        return {
+          success: true,
+          transactionHash: result.payment_hash,
+          amount: result.amount_sats || amount,
+          recipientAddress,
+          memo,
+          timestamp: new Date(),
+          fee: 0,
+          status: result.status,
+          cardBalance: result.card_balance_sats,
+          message: `Payment sent! Card balance: ${result.card_balance_sats} sats`,
+        };
+      }
+      throw new Error(result.message || 'Payment failed');
+    }
     await MOCK_DELAY(2500);
     return {
       success: true,
@@ -142,6 +169,20 @@ export const paymentService = {
   },
 
   receiveBitcoin: async (amount, description) => {
+    if (USE_REAL_API) {
+      const result = await walletAPI.createInvoice(amount, description || 'Mobibit Top-Up');
+      // Backend returns: { status, amount_sats, payment_request, payment_hash }
+      return {
+        success: true,
+        invoice: result.payment_request,
+        rHash: result.payment_hash,
+        amount: result.amount_sats,
+        description: description || 'Mobibit Top-Up',
+        expiresAt: new Date(Date.now() + 3600000),
+        timestamp: new Date(),
+        paymentId: result.payment_hash,
+      };
+    }
     await MOCK_DELAY(1500);
     return {
       success: true,
@@ -149,7 +190,24 @@ export const paymentService = {
       amount, description,
       expiresAt: new Date(Date.now() + 3600000),
       timestamp: new Date(),
+      warning: 'Using mock invoice - start backend for real payments',
     };
+  },
+
+  checkInvoicePaid: async (paymentId) => {
+    if (USE_REAL_API) {
+      const result = await walletAPI.checkInvoice(paymentId);
+      // Backend returns: { status: 'paid'|'pending', settled: true|false }
+      return { paid: result.settled === true || result.status === 'paid', status: result.status };
+    }
+    return { paid: false, status: 'mock' };
+  },
+
+  depositSats: async (paymentId) => {
+    if (USE_REAL_API) {
+      return await walletAPI.deposit(paymentId);
+    }
+    return { status: 'mock' };
   },
 
   spendCard: async (merchantName, amount, cardLast4) => {
@@ -159,6 +217,35 @@ export const paymentService = {
       transactionId: 'SPEND' + Math.random().toString(36).substr(2, 9).toUpperCase(),
       merchant: merchantName, amount, cardLast4,
       timestamp: new Date(), status: 'approved',
+    };
+  },
+
+  transferToUser: async (recipientPhone, amountSats, memo) => {
+    if (USE_REAL_API) {
+      const result = await paymentAPI.transfer(recipientPhone, amountSats, memo || '');
+      // Let errors from the API propagate to the caller
+      return {
+        success: true,
+        reference: result.reference,
+        amountSats: result.amount_sats,
+        feeSats: result.fee_sats,
+        recipientName: result.recipient_name,
+        recipientPhone: result.recipient_phone,
+        senderNewBalance: result.sender_new_balance,
+        message: result.message || 'Transfer successful',
+        timestamp: new Date(result.timestamp),
+      };
+    }
+    await MOCK_DELAY(1500);
+    return {
+      success: true,
+      reference: 'P2P-' + Math.random().toString(36).substr(2, 12).toUpperCase(),
+      amountSats,
+      feeSats: Math.max(1, Math.floor(amountSats * 0.005)),
+      recipientName: 'User',
+      recipientPhone,
+      senderNewBalance: 250000 - amountSats,
+      timestamp: new Date(),
     };
   },
 };
@@ -195,7 +282,7 @@ export const exchangeRateService = {
 export const userService = {
   getProfile: async () => {
     await MOCK_DELAY();
-    return { id: '1', name: 'Demo User', email: 'demo@satscardapp.com', phone: '+256701234567', country: 'Uganda', createdAt: new Date('2024-08-01'), kyc: { verified: true, level: 'tier2' } };
+    return { id: '1', name: 'Demo User', email: 'demo@mobibitafrica.com', phone: '+256701234567', country: 'Uganda', createdAt: new Date('2024-08-01'), kyc: { verified: true, level: 'tier2' } };
   },
 
   updateProfile: async (updates) => {

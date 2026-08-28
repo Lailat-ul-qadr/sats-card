@@ -76,10 +76,32 @@ async function request(endpoint, options = {}) {
 }
 
 async function handleResponse(response) {
-  const data = await response.json();
+  let data;
+  try {
+    data = await response.json();
+  } catch {
+    // Response isn't JSON (e.g. HTML error page)
+    throw new Error(`Server error (${response.status}). Is the backend running?`);
+  }
 
   if (!response.ok) {
-    const error = new Error(data.detail || data.message || 'Request failed');
+    // Build a clear error message from backend response
+    let msg = data.detail || data.message || 'Request failed';
+
+    // Add status code context for common errors
+    if (response.status === 404) {
+      msg = msg.includes('not found') ? msg : `${msg} (resource not found)`;
+    } else if (response.status === 401) {
+      msg = 'Session expired. Please log in again.';
+    } else if (response.status === 403) {
+      msg = 'You do not have permission to do this.';
+    } else if (response.status === 422) {
+      msg = msg.includes('Validation error') ? msg : `Invalid input: ${msg}`;
+    } else if (response.status >= 500) {
+      msg = 'Server error. Please try again later.';
+    }
+
+    const error = new Error(msg);
     error.status = response.status;
     error.data = data;
     throw error;
@@ -146,23 +168,32 @@ export const authAPI = {
 
 export const walletAPI = {
   getBalance: async () => {
-    return request('/wallet/balance');
+    return request('/card_balance');
   },
 
-  createInvoice: async (amountSats, memo = 'Sats Card Top-Up') => {
-    return request('/wallet/invoice', {
+  createInvoice: async (amountSats, memo = 'Mobibit Top-Up') => {
+    return request('/create_invoice', {
       method: 'POST',
       body: JSON.stringify({ amount_sats: amountSats, memo }),
     });
   },
 
-  payInvoice: async (paymentRequest, amountSats = null) => {
-    return request('/wallet/send', {
+  payInvoice: async (paymentRequest) => {
+    return request('/card_payment', {
       method: 'POST',
       body: JSON.stringify({
         payment_request: paymentRequest,
-        amount_sats: amountSats,
       }),
+    });
+  },
+
+  checkInvoice: async (paymentId) => {
+    return request(`/check_payment/${paymentId}`);
+  },
+
+  deposit: async (paymentId) => {
+    return request(`/deposit/${paymentId}`, {
+      method: 'POST',
     });
   },
 };
@@ -185,6 +216,17 @@ export const paymentAPI = {
 
   checkStatus: async (providerTxnId, provider = 'mtn_momo') => {
     return request(`/payments/${providerTxnId}/status?provider=${provider}`);
+  },
+
+  transfer: async (recipientPhone, amountSats, memo = '') => {
+    return request('/payments/transfer', {
+      method: 'POST',
+      body: JSON.stringify({
+        recipient_phone: recipientPhone,
+        amount_sats: amountSats,
+        memo,
+      }),
+    });
   },
 };
 

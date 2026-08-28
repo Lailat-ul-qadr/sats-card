@@ -9,7 +9,7 @@ from pydantic import Field
 
 class Settings(BaseSettings):
     # ── App ──────────────────────────────────────────────────────────
-    APP_NAME: str = "Sats Card API"
+    APP_NAME: str = "Mobibit Africa API"
     APP_VERSION: str = "0.1.0"
     DEBUG: bool = Field(default=False)
     SECRET_KEY: str = Field(..., description="JWT signing secret")
@@ -17,7 +17,7 @@ class Settings(BaseSettings):
 
     # ── Database ─────────────────────────────────────────────────────
     DATABASE_URL: str = Field(
-        default="postgresql+asyncpg://postgres:postgres@localhost:5432/satscard",
+        default="postgresql+asyncpg://postgres:postgres@localhost:5432/mobibitafrica",
         description="Async PostgreSQL connection string",
     )
 
@@ -59,6 +59,14 @@ class Settings(BaseSettings):
     ORANGE_MONEY_ENVIRONMENT: str = "sandbox"
     ORANGE_MONEY_BASE_URL: str = "https://api.orange.com/orange-money-webpay/dev/v1"
 
+    # ── MPESA (Safaricom Daraja API) ───────────────────────────────
+    MPESA_CONSUMER_KEY: str = Field(default="", description="Safaricom Daraja consumer key")
+    MPESA_CONSUMER_SECRET: str = Field(default="", description="Safaricom Daraja consumer secret")
+    MPESA_SHORT_CODE: str = Field(default="", description="Paybill/Till number")
+    MPESA_PASSKEY: str = Field(default="", description="Daraja API passkey")
+    MPESA_ENVIRONMENT: str = "sandbox"  # sandbox | production
+    MPESA_CALLBACK_URL: str = "https://yourdomain.com/api/webhooks/mpesa"
+
     # ── Exchange Rate ───────────────────────────────────────────────
     BTC_PRICE_FEED_URL: str = "https://api.coingecko.com/api/v3/simple/price"
     PRICE_CACHE_TTL_SECONDS: int = 30
@@ -75,7 +83,10 @@ class Settings(BaseSettings):
     # ── SMS Gateway ─────────────────────────────────────────────────
     SMS_PROVIDER: str = "africastalking"  # africastalking | twilio
     SMS_API_KEY: str = Field(default="")
-    SMS_SENDER_ID: str = "SATSCARD"
+    SMS_SENDER_ID: str = "MOBIBIT"
+
+    # ── Sign-up Bonus ──────────────────────────────────────────────
+    SIGNUP_BONUS_SATS: int = 10000  # Give new users 10,000 sats on registration
 
     # ── USSD ────────────────────────────────────────────────────────
     USSD_SESSION_TIMEOUT_SECONDS: int = 180  # 3 minutes

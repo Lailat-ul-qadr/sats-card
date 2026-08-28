@@ -1,4 +1,4 @@
-# SATS CARD FRONTEND — COMPLETE ✅
+# MOBIBIT AFRICA FRONTEND — COMPLETE ✅
 
 ## PROJECT COMPLETION SUMMARY
 
@@ -67,7 +67,7 @@
    - Real data loading
    - Logout functionality
 
-5. **Sats Card** (6.9 KB)
+5. **Mobibit Africa** (6.9 KB)
    - Beautiful gradient card design
    - Card number with show/hide toggle
    - Balance sections (sats, USD)
@@ -344,7 +344,7 @@
 ## 🏗️ Folder Structure
 
 ```
-sats-card-frontend/
+mobibit-africa-frontend/
 ├── src/
 │   ├── pages/
 │   │   ├── Landing.jsx          (1/13)
@@ -436,7 +436,7 @@ npm run dev:         ✓ Running on http://localhost:5174
 
 ### To Run:
 ```bash
-cd sats-card-frontend
+cd mobibit-africa-frontend
 npm install  # if needed
 npm run dev
 # Visit http://localhost:5174
@@ -515,7 +515,7 @@ npm run dev
 
 ## 🎉 CONCLUSION
 
-**The Sats Card Frontend is COMPLETE and DEMO-READY!**
+**The Mobibit Africa Frontend is COMPLETE and DEMO-READY!**
 
 All 13 pages are built, fully functional, animated, responsive, and ready for tomorrow's hackathon presentation. The code is clean, well-documented, and production-ready.
 

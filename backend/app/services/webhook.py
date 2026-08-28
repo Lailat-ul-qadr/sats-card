@@ -191,6 +191,78 @@ class WebhookHandler:
 
         return hmac.compare_digest(expected, signature)
 
+    # ── MPESA (Safaricom) Webhook ────────────────────────────────
+
+    async def process_mpesa_webhook(self, payload: dict) -> dict:
+        """
+        Process MPESA (Safaricom) callback.
+
+        MPESA sends:
+        {
+            "Body": {
+                "stkCallback": {
+                    "MerchantRequestID": "...",
+                    "CheckoutRequestID": "...",
+                    "ResultCode": 0,
+                    "ResultDesc": "Success",
+                    "CallbackMetadata": {
+                        "Item": [
+                            {"Name": "Amount", "Value": 5000},
+                            {"Name": "MpesaReceiptNumber", "Value": "QHK31AA1ZZ"},
+                            {"Name": "Balance"},
+                            {"Name": "TransactionDate", "Value": 20240101120000},
+                            {"Name": "PhoneNumber", "Value": 254712345678}
+                        ]
+                    }
+                }
+            }
+        }
+        """
+        try:
+            stk_callback = payload.get("Body", {}).get("stkCallback", {})
+            result_code = stk_callback.get("ResultCode", -1)
+            result_desc = stk_callback.get("ResultDesc", "")
+            checkout_id = stk_callback.get("CheckoutRequestID", "")
+
+            # Extract metadata
+            callback_metadata = stk_callback.get("CallbackMetadata", {}).get("Item", [])
+            metadata = {item.get("Name"): item.get("Value") for item in callback_metadata}
+
+            receipt_number = metadata.get("MpesaReceiptNumber", "")
+            amount = metadata.get("Amount", 0)
+            phone = metadata.get("PhoneNumber", "")
+
+            logger.info("MPESA webhook: checkout=%s code=%s receipt=%s", checkout_id, result_code, receipt_number)
+
+            if not checkout_id and not receipt_number:
+                logger.warning("MPESA webhook missing identifiers")
+                return {"status": "ignored", "reason": "missing identifiers"}
+
+            # Map result code to status
+            status = "SUCCESSFUL" if result_code == 0 else "FAILED"
+
+            # Use receipt number as reference if available
+            reference = receipt_number or checkout_id
+
+            result = await self.tx_service.process_webhook(
+                provider="mpesa",
+                provider_reference=reference,
+                provider_status=status,
+                raw_payload=payload,
+            )
+
+            if result:
+                return {
+                    "status": "processed",
+                    "reference": reference,
+                    "transaction_status": result.status.value,
+                }
+            else:
+                return {"status": "not_found", "reference": reference}
+        except Exception as e:
+            logger.error("MPESA webhook error: %s", e)
+            return {"status": "error", "error": str(e)}
+
     # ── Generic Webhook Router ──────────────────────────────────────
 
     async def route_webhook(self, provider: str, payload: dict) -> dict:
@@ -207,6 +279,7 @@ class WebhookHandler:
             "airtel_money": self.process_airtel_webhook,
             "orange": self.process_orange_webhook,
             "orange_money": self.process_orange_webhook,
+            "mpesa": self.process_mpesa_webhook,
         }
 
         handler = handlers.get(provider.lower())

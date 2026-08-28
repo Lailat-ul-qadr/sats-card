@@ -155,7 +155,7 @@ The foundation is ready. Next phase will build all 13 pages:
 
 ### Authenticated Pages (10):
 1. **Dashboard** - Main hub with wallet overview
-2. **Sats Card** - Virtual card display and info
+2. **Mobibit Africa** - Virtual card display and info
 3. **Fund Card** - Add funds via mobile money
 4. **Send Bitcoin** - Send sats to Lightning address
 5. **Receive Bitcoin** - Generate invoice, receive sats

@@ -27,6 +27,10 @@ class USSDResponse(BaseModel):
 class USSDScreen(str, Enum):
     MAIN_MENU = "main_menu"
     CHECK_BALANCE = "check_balance"
+    P2P_TRANSFER_MENU = "p2p_transfer_menu"
+    P2P_TRANSFER_PHONE = "p2p_transfer_phone"
+    P2P_TRANSFER_AMOUNT = "p2p_transfer_amount"
+    P2P_TRANSFER_CONFIRM = "p2p_transfer_confirm"
     SEND_BTC_MENU = "send_btc_menu"
     SEND_BTC_AMOUNT = "send_btc_amount"
     SEND_BTC_CONFIRM = "send_btc_confirm"
@@ -37,6 +41,10 @@ class USSDScreen(str, Enum):
     SWAP_MENU = "swap_menu"
     SWAP_AMOUNT = "swap_amount"
     SWAP_CONFIRM = "swap_confirm"
+    WITHDRAW_MENU = "withdraw_menu"
+    WITHDRAW_PROVIDER = "withdraw_provider"
+    WITHDRAW_AMOUNT = "withdraw_amount"
+    WITHDRAW_CONFIRM = "withdraw_confirm"
     HELP = "help"
     TRANSACTION_RESULT = "transaction_result"
     ERROR = "error"
@@ -44,23 +52,30 @@ class USSDScreen(str, Enum):
 
 MENUS = {
     USSDScreen.MAIN_MENU: (
-        "SATS CARD\n"
+        "MOBIBIT AFRICA\n"
         "Welcome! Select an option:\n\n"
         "1. Check Balance\n"
-        "2. Send BTC\n"
-        "3. Fund Account (Buy BTC)\n"
-        "4. Receive USD\n"
-        "5. Convert BTC <-> USD\n"
-        "6. Help\n\n"
+        "2. Send BTC to User\n"
+        "3. Send BTC via Lightning\n"
+        "4. Fund Account (Buy BTC)\n"
+        "5. Receive USD\n"
+        "6. Convert BTC <-> USD\n"
+        "7. Withdraw BTC to Mobile Money\n"
+        "8. Help\n\n"
         "Reply with a number:"
     ),
-    USSDScreen.SEND_BTC_MENU: (
-        "SEND BTC\n"
-        "Enter the recipient's phone number:\n\n"
+    USSDScreen.P2P_TRANSFER_MENU: (
+        "SEND BTC TO USER\n"
+        "Enter recipient's phone number:\n\n"
         "Example: +256701234567"
     ),
+    USSDScreen.SEND_BTC_MENU: (
+        "SEND BTC VIA LIGHTNING\n"
+        "Enter the Lightning invoice:\n\n"
+        "Example: lnbc1000n1p..."
+    ),
     USSDScreen.CHECK_BALANCE: (
-        "SATS CARD BALANCE\n\n"
+        "MOBIBIT AFRICA BALANCE\n\n"
         "Reply 0 for main menu."
     ),
     USSDScreen.FUND_ACCOUNT_MENU: (
@@ -79,27 +94,44 @@ MENUS = {
         "2. USD -> BTC\n\n"
         "Reply 1 or 2:"
     ),
+    USSDScreen.WITHDRAW_MENU: (
+        "WITHDRAW BTC TO MOBILE MONEY\n"
+        "Select provider:\n\n"
+        "1. MTN MoMo\n"
+        "2. Airtel Money\n"
+        "3. Orange Money\n"
+        "4. MPESA\n\n"
+        "Reply 1-4:"
+    ),
+    USSDScreen.WITHDRAW_PROVIDER: (
+        "WITHDRAW BTC\n"
+        "Enter amount in sats:\n\n"
+        "Min: 1,000 | Max: 10,000,000"
+    ),
     USSDScreen.ERROR: (
-        "SATS CARD\n\n"
+        "MOBIBIT AFRICA\n\n"
         "Sorry, an error occurred.\n"
         "Please try again.\n\n"
         "Reply 0 for main menu."
     ),
     USSDScreen.TRANSACTION_RESULT: (
-        "SATS CARD\n\n"
+        "MOBIBIT AFRICA\n\n"
         "Reply 0 for main menu."
     ),
     USSDScreen.HELP: (
-        "SATS CARD HELP\n\n"
+        "MOBIBIT AFRICA HELP\n\n"
         "How it works:\n"
         "- Fund your account via mobile money\n"
         "- Funds convert to Bitcoin instantly\n"
         "- Send BTC to anyone with a phone\n"
         "- Receive USD payments\n"
         "- Convert BTC <-> USD\n"
+        "- Withdraw BTC back to mobile money\n"
         "- Spend with virtual card\n\n"
+        "Supported providers:\n"
+        "MTN MoMo, Airtel, Orange, MPESA\n\n"
         "Support: +256700000000\n"
-        "Web: satscardapp.com\n\n"
+        "Web: mobibitafrica.com\n\n"
         "Reply 0 to go back."
     ),
 }
@@ -127,6 +159,20 @@ class USSDHandler:
                 return self._handle_main_menu(session, user_input)
             elif screen == USSDScreen.CHECK_BALANCE:
                 return self._handle_check_balance(session, user_input)
+            elif screen == USSDScreen.P2P_TRANSFER_MENU:
+                return self._handle_p2p_transfer_menu(session, user_input)
+            elif screen == USSDScreen.P2P_TRANSFER_AMOUNT:
+                return self._handle_p2p_transfer_amount(session, user_input)
+            elif screen == USSDScreen.P2P_TRANSFER_CONFIRM:
+                return self._handle_p2p_transfer_confirm(session, user_input)
+            elif screen == USSDScreen.SEND_BTC_MENU:
+                return self._handle_send_btc_menu(session, user_input)
+            elif screen == USSDScreen.WITHDRAW_MENU:
+                return self._handle_withdraw_menu(session, user_input)
+            elif screen == USSDScreen.WITHDRAW_AMOUNT:
+                return self._handle_withdraw_amount(session, user_input)
+            elif screen == USSDScreen.WITHDRAW_CONFIRM:
+                return self._handle_withdraw_confirm(session, user_input)
             elif screen == USSDScreen.SEND_BTC_MENU:
                 return self._handle_send_btc_menu(session, user_input)
             elif screen == USSDScreen.SEND_BTC_AMOUNT:
@@ -161,11 +207,13 @@ class USSDHandler:
     def _handle_main_menu(self, session, input):
         menu = {
             "1": (MENUS.get(USSDScreen.CHECK_BALANCE, ""), USSDScreen.CHECK_BALANCE),
-            "2": (MENUS[USSDScreen.SEND_BTC_MENU], USSDScreen.SEND_BTC_MENU),
-            "3": (MENUS[USSDScreen.FUND_ACCOUNT_MENU], USSDScreen.FUND_ACCOUNT_MENU),
-            "4": (MENUS[USSDScreen.RECEIVE_USD_MENU], USSDScreen.RECEIVE_USD_MENU),
-            "5": (MENUS[USSDScreen.SWAP_MENU], USSDScreen.SWAP_MENU),
-            "6": (MENUS[USSDScreen.HELP], USSDScreen.HELP),
+            "2": (MENUS[USSDScreen.P2P_TRANSFER_MENU], USSDScreen.P2P_TRANSFER_MENU),
+            "3": (MENUS[USSDScreen.SEND_BTC_MENU], USSDScreen.SEND_BTC_MENU),
+            "4": (MENUS[USSDScreen.FUND_ACCOUNT_MENU], USSDScreen.FUND_ACCOUNT_MENU),
+            "5": (MENUS[USSDScreen.RECEIVE_USD_MENU], USSDScreen.RECEIVE_USD_MENU),
+            "6": (MENUS[USSDScreen.SWAP_MENU], USSDScreen.SWAP_MENU),
+            "7": (MENUS[USSDScreen.WITHDRAW_MENU], USSDScreen.WITHDRAW_MENU),
+            "8": (MENUS[USSDScreen.HELP], USSDScreen.HELP),
         }
         text, next_screen = menu.get(input, (MENUS[USSDScreen.MAIN_MENU], USSDScreen.MAIN_MENU))
         return self._respond(text, next_screen, session)
@@ -173,7 +221,7 @@ class USSDHandler:
     # --- Check Balance ---
     def _handle_check_balance(self, session, input):
         text = (
-            "SATS CARD BALANCE\n\n"
+            "MOBIBIT AFRICA BALANCE\n\n"
             "BTC: 250,000 sats\n"
             "   = 0.00250000 BTC\n"
             "   = $98.75 USD\n\n"
@@ -182,7 +230,58 @@ class USSDHandler:
         )
         return self._respond(text, USSDScreen.MAIN_MENU, session)
 
-    # --- Send BTC ---
+    # --- P2P Transfer (Send BTC to Another User) ---
+    def _handle_p2p_transfer_menu(self, session, input):
+        if input == "0":
+            return self._respond(MENUS[USSDScreen.MAIN_MENU], USSDScreen.MAIN_MENU, session)
+        if not input.startswith("+") or len(input) < 10:
+            return self._respond("Invalid phone. Use format: +256701234567\nReply 0 to cancel.", USSDScreen.P2P_TRANSFER_MENU, session)
+        session.data["p2p_recipient"] = input
+        text = "SEND BTC TO USER\nRecipient: " + input + "\n\nEnter amount in sats (e.g. 10000):"
+        return self._respond(text, USSDScreen.P2P_TRANSFER_AMOUNT, session)
+
+    def _handle_p2p_transfer_amount(self, session, input):
+        if input == "0":
+            return self._respond(MENUS[USSDScreen.MAIN_MENU], USSDScreen.MAIN_MENU, session)
+        try:
+            amount = int(input)
+            if amount <= 0 or amount > 10000000:
+                raise ValueError
+        except ValueError:
+            return self._respond("Invalid amount. Enter 1-10,000,000 sats.\nReply 0 to cancel.", USSDScreen.P2P_TRANSFER_AMOUNT, session)
+        session.data["p2p_amount"] = amount
+        phone = session.data["p2p_recipient"]
+        fee = max(1, int(amount * 0.005))  # 0.5% fee
+        total = amount + fee
+        text = (
+            "SEND BTC - CONFIRM\n"
+            "To: " + phone + "\n"
+            "Amount: " + f"{amount:,}" + " sats\n"
+            "Fee: " + f"{fee:,}" + " sats\n"
+            "Total: " + f"{total:,}" + " sats\n\n"
+            "1. Confirm & Send\n"
+            "2. Cancel\n\n"
+            "Reply 1 or 2:"
+        )
+        return self._respond(text, USSDScreen.P2P_TRANSFER_CONFIRM, session)
+
+    def _handle_p2p_transfer_confirm(self, session, input):
+        if input == "1":
+            phone = session.data["p2p_recipient"]
+            amount = session.data["p2p_amount"]
+            fee = max(1, int(amount * 0.005))
+            text = (
+                "BTC SENT!\n\n"
+                "To: " + phone + "\n"
+                "Amount: " + f"{amount:,}" + " sats\n"
+                "Fee: " + f"{fee:,}" + " sats\n"
+                "Status: Confirmed\n\n"
+                "Reply 0 for main menu."
+            )
+            return self._respond(text, USSDScreen.MAIN_MENU, session)
+        return self._respond(MENUS[USSDScreen.MAIN_MENU], USSDScreen.MAIN_MENU, session)
+
+    # --- Send BTC via Lightning ---
     def _handle_send_btc_menu(self, session, input):
         if input == "0":
             return self._respond(MENUS[USSDScreen.MAIN_MENU], USSDScreen.MAIN_MENU, session)
@@ -339,6 +438,76 @@ class USSDHandler:
             from_cur = session.data.get("swap_from", "BTC")
             amount = session.data.get("swap_amount", 0)
             text = "SWAP COMPLETED\n\n" + f"{amount}" + " " + from_cur + " converted successfully.\n\nReply 0 for main menu."
+            return self._respond(text, USSDScreen.MAIN_MENU, session)
+        return self._respond(MENUS[USSDScreen.MAIN_MENU], USSDScreen.MAIN_MENU, session)
+
+    # --- Withdraw BTC to Mobile Money ---
+    def _handle_withdraw_menu(self, session, input):
+        if input == "0":
+            return self._respond(MENUS[USSDScreen.MAIN_MENU], USSDScreen.MAIN_MENU, session)
+        providers = {
+            "1": "mtn_momo",
+            "2": "airtel_money",
+            "3": "orange_money",
+            "4": "mpesa",
+        }
+        provider = providers.get(input)
+        if not provider:
+            return self._respond("Invalid provider. Reply 1-4.", USSDScreen.WITHDRAW_MENU, session)
+        session.data["withdraw_provider"] = provider
+        text = (
+            "WITHDRAW BTC TO " + provider.upper().replace("_", " ") + "\n"
+            "Enter amount in sats:\n\n"
+            "Min: 1,000 | Max: 10,000,000"
+        )
+        return self._respond(text, USSDScreen.WITHDRAW_AMOUNT, session)
+
+    def _handle_withdraw_amount(self, session, input):
+        if input == "0":
+            return self._respond(MENUS[USSDScreen.MAIN_MENU], USSDScreen.MAIN_MENU, session)
+        try:
+            amount = int(input)
+            if amount < 1000 or amount > 10000000:
+                raise ValueError
+        except ValueError:
+            return self._respond("Invalid amount. Min: 1,000 | Max: 10,000,000 sats.\nReply 0 to cancel.", USSDScreen.WITHDRAW_AMOUNT, session)
+        session.data["withdraw_amount"] = amount
+        provider = session.data.get("withdraw_provider", "mpesa")
+        # Calculate conversion (sats → USD → local currency)
+        usd_est = round(amount * 0.000025 * 0.98, 2)  # 2% fee
+        if provider == "mpesa":
+            fiat_est = round(usd_est * 130, 0)  # KES
+            currency = "KES"
+        elif provider in ["mtn_momo", "airtel_money"]:
+            fiat_est = round(usd_est * 3700, 0)  # UGX
+            currency = "UGX"
+        else:
+            fiat_est = round(usd_est * 600, 0)  # XOF
+            currency = "XOF"
+        text = (
+            "WITHDRAW CONFIRM\n"
+            "Amount: " + f"{amount:,}" + " sats\n"
+            "You will receive: " + f"{fiat_est:,.0f}" + " " + currency + "\n"
+            "Fee: ~2%\n"
+            "Provider: " + provider.upper().replace("_", " ") + "\n\n"
+            "1. Confirm Withdraw\n"
+            "2. Cancel\n\n"
+            "Reply 1 or 2:"
+        )
+        return self._respond(text, USSDScreen.WITHDRAW_CONFIRM, session)
+
+    def _handle_withdraw_confirm(self, session, input):
+        if input == "1":
+            amount = session.data.get("withdraw_amount", 0)
+            provider = session.data.get("withdraw_provider", "mpesa")
+            text = (
+                "WITHDRAWAL INITIATED\n\n"
+                "Amount: " + f"{amount:,}" + " sats\n"
+                "Provider: " + provider.upper().replace("_", " ") + "\n"
+                "Status: Processing\n\n"
+                "You will receive an SMS confirmation.\n"
+                "Reply 0 for main menu."
+            )
             return self._respond(text, USSDScreen.MAIN_MENU, session)
         return self._respond(MENUS[USSDScreen.MAIN_MENU], USSDScreen.MAIN_MENU, session)
 

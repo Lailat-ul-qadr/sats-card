@@ -85,7 +85,7 @@ export default function Landing() {
               <div className="absolute inset-0 bg-amber-lime rounded-[28px] blur-2xl opacity-30" />
               <div className="relative panel-elevated p-7 rounded-[28px] border-amber/20">
                 <div className="flex justify-between items-start mb-10">
-                  <span className="text-xs uppercase tracking-widest text-ink-muted font-semibold">Sats Card</span>
+                  <span className="text-xs uppercase tracking-widest text-ink-muted font-semibold">Mobibit Africa</span>
                   <span className="text-2xl bolt-icon">⚡</span>
                 </div>
                 <div className="mb-8">
@@ -246,7 +246,7 @@ export default function Landing() {
       </section>
 
       <footer className="border-t border-line py-8 text-center text-ink-muted text-xs">
-        © {new Date().getFullYear()} Sats Card — Demo product, not affiliated with any mobile money operator.
+        © {new Date().getFullYear()} Mobibit Africa — Demo product, not affiliated with any mobile money operator.
       </footer>
     </div>
   );

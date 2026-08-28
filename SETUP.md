@@ -1,4 +1,4 @@
-# Sats Card — Setup Guide
+# Mobibit Africa — Setup Guide
 
 ## Quick Start (5 minutes)
 
@@ -54,14 +54,14 @@ MTN_MOMO_SUBSCRIPTION_KEY=your-primary-key-from-step-1
 MTN_MOMO_ENVIRONMENT=sandbox
 MTN_MOMO_COUNTRY=rw
 SECRET_KEY=any-random-string-here
-DATABASE_URL=postgresql+asyncpg://postgres:postgres@localhost:5432/satscard
+DATABASE_URL=postgresql+asyncpg://postgres:postgres@localhost:5432/mobibitafrica
 ```
 
 ### 5. Start Everything
 
 ```bash
 # Start database (if using Docker)
-docker run -d --name satscard-pg -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=satscard postgres:16-alpine
+docker run -d --name mobibitafrica-pg -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=mobibitafrica postgres:16-alpine
 
 # Start backend
 cd backend
@@ -119,7 +119,7 @@ curl -X POST "https://sandbox.momodeveloper.mtn.co.rw/collection/v1_0/requesttop
       "partyIdType": "MSISDN",
       "partyId": "250771234567"
     },
-    "payerMessage": "Pay for Sats Card",
+    "payerMessage": "Pay for Mobibit Africa",
     "payeeNote": "Top-up"
   }'
 

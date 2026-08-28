@@ -1,4 +1,4 @@
-# Sats Card Frontend — Lightning-Powered Bitcoin Card MVP
+# Mobibit Africa — Lightning-Powered Bitcoin Card MVP
 
 A **complete, production-grade frontend** for a Bitcoin/Lightning hackathon MVP built in **2 days**. 
 
@@ -8,7 +8,7 @@ A **complete, production-grade frontend** for a Bitcoin/Lightning hackathon MVP 
 
 ## 🎯 Project Overview
 
-**Sats Card** solves the problem of Bitcoin adoption in emerging markets:
+**Mobibit Africa** solves the problem of Bitcoin adoption in emerging markets:
 
 - **Input:** Mobile money (MTN, Airtel, Orange Money)
 - **Process:** Convert fiat to BTC via Lightning Network
@@ -35,7 +35,7 @@ This frontend provides a complete user experience for:
 
 ```bash
 # Enter the project directory
-cd sats-card-frontend
+cd mobibit-africa-frontend
 
 # Install dependencies
 npm install
@@ -48,7 +48,7 @@ The app will be available at **http://localhost:5174**
 
 ### Demo Credentials
 ```
-Email: demo@satscardapp.com
+Email: demo@mobibitafrica.com
 Password: demo@123456
 (Or use any email/password combination)
 ```

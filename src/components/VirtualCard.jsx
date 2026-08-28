@@ -44,7 +44,7 @@ export default function VirtualCard({sats=0, btcUsd=30000, onSpend}){
         </div>
         <div className="card-content">
           <div className="card-top">
-            <div className="card-label">Sats Card (Demo)</div>
+            <div className="card-label">Mobibit Africa (Demo)</div>
             <div className="chip" aria-hidden>💳</div>
           </div>
           <div className="balance-section">
@@ -52,7 +52,7 @@ export default function VirtualCard({sats=0, btcUsd=30000, onSpend}){
             <div className="balance-usd">≈ ${satsToUsd(displaySats, btcUsd)} USD</div>
           </div>
           <div className="card-footer">
-            <span className="card-holder">Sats Card User</span>
+            <span className="card-holder">Mobibit User</span>
           </div>
         </div>
       </div>
