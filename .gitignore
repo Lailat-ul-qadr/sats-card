@@ -1,9 +1,5 @@
-node_modules/
-dist/
-.env
-.vscode/
+venv/
 __pycache__/
 *.pyc
-satscard.db
-backend/satscard.db
-.aider*
+sats_card.db
+.env
