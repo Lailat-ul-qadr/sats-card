@@ -1,0 +1,80 @@
+2026-08-27 18:30:11,870 DEBUG asyncio: Using proactor: IocpProactor
+INFO:     Started server process [16472]
+INFO:     Waiting for application startup.
+2026-08-27 18:30:11,894 INFO app.main: \U0001f680 Starting Sats Card API v0.1.0
+2026-08-27 18:30:11,895 INFO app.main:    Network: mainnet
+2026-08-27 18:30:11,895 INFO app.main:    MTN env: sandbox | Airtel env: sandbox | Orange env: sandbox
+2026-08-27 18:30:11,896 DEBUG aiosqlite: executing <function connect.<locals>.connector at 0x0000023BB5EDA350>
+2026-08-27 18:30:11,896 DEBUG aiosqlite: operation <function connect.<locals>.connector at 0x0000023BB5EDA350> completed
+2026-08-27 18:30:11,897 DEBUG aiosqlite: executing functools.partial(<built-in method create_function of sqlite3.Connection object at 0x0000023BB5ECE7A0>, 'regexp', 2, <function SQLiteDialect_pysqlite.on_connect.<locals>.regexp at 0x0000023BB5733270>, deterministic=True)
+2026-08-27 18:30:11,897 DEBUG aiosqlite: operation functools.partial(<built-in method create_function of sqlite3.Connection object at 0x0000023BB5ECE7A0>, 'regexp', 2, <function SQLiteDialect_pysqlite.on_connect.<locals>.regexp at 0x0000023BB5733270>, deterministic=True) completed
+2026-08-27 18:30:11,898 DEBUG aiosqlite: executing functools.partial(<built-in method create_function of sqlite3.Connection object at 0x0000023BB5ECE7A0>, 'floor', 1, <built-in function floor>, deterministic=True)
+2026-08-27 18:30:11,898 DEBUG aiosqlite: operation functools.partial(<built-in method create_function of sqlite3.Connection object at 0x0000023BB5ECE7A0>, 'floor', 1, <built-in function floor>, deterministic=True) completed
+2026-08-27 18:30:11,898 DEBUG aiosqlite: executing functools.partial(<built-in method cursor of sqlite3.Connection object at 0x0000023BB5ECE7A0>)
+2026-08-27 18:30:11,898 DEBUG aiosqlite: operation functools.partial(<built-in method cursor of sqlite3.Connection object at 0x0000023BB5ECE7A0>) completed
+2026-08-27 18:30:11,898 DEBUG aiosqlite: executing functools.partial(<built-in method execute of sqlite3.Cursor object at 0x0000023BB5EEC5C0>, 'PRAGMA read_uncommitted', [])
+2026-08-27 18:30:11,899 DEBUG aiosqlite: operation functools.partial(<built-in method execute of sqlite3.Cursor object at 0x0000023BB5EEC5C0>, 'PRAGMA read_uncommitted', []) completed
+2026-08-27 18:30:11,899 DEBUG aiosqlite: executing functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x0000023BB5EEC5C0>)
+2026-08-27 18:30:11,899 DEBUG aiosqlite: operation functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x0000023BB5EEC5C0>) completed
+2026-08-27 18:30:11,899 DEBUG aiosqlite: executing functools.partial(<built-in method close of sqlite3.Cursor object at 0x0000023BB5EEC5C0>)
+2026-08-27 18:30:11,899 DEBUG aiosqlite: operation functools.partial(<built-in method close of sqlite3.Cursor object at 0x0000023BB5EEC5C0>) completed
+2026-08-27 18:30:11,899 DEBUG aiosqlite: executing functools.partial(<built-in method rollback of sqlite3.Connection object at 0x0000023BB5ECE7A0>)
+2026-08-27 18:30:11,899 DEBUG aiosqlite: operation functools.partial(<built-in method rollback of sqlite3.Connection object at 0x0000023BB5ECE7A0>) completed
+2026-08-27 18:30:11,900 INFO sqlalchemy.engine.Engine: BEGIN (implicit)
+2026-08-27 18:30:11,900 INFO sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2026-08-27 18:30:11,901 INFO sqlalchemy.engine.Engine: [raw sql] ()
+2026-08-27 18:30:11,901 DEBUG aiosqlite: executing functools.partial(<built-in method cursor of sqlite3.Connection object at 0x0000023BB5ECE7A0>)
+2026-08-27 18:30:11,901 DEBUG aiosqlite: operation functools.partial(<built-in method cursor of sqlite3.Connection object at 0x0000023BB5ECE7A0>) completed
+2026-08-27 18:30:11,901 DEBUG aiosqlite: executing functools.partial(<built-in method execute of sqlite3.Cursor object at 0x0000023BB5EECA40>, 'PRAGMA main.table_info("users")', ())
+2026-08-27 18:30:11,902 DEBUG aiosqlite: operation functools.partial(<built-in method execute of sqlite3.Cursor object at 0x0000023BB5EECA40>, 'PRAGMA main.table_info("users")', ()) completed
+2026-08-27 18:30:11,902 DEBUG aiosqlite: executing functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x0000023BB5EECA40>)
+2026-08-27 18:30:11,903 DEBUG aiosqlite: operation functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x0000023BB5EECA40>) completed
+2026-08-27 18:30:11,903 DEBUG aiosqlite: executing functools.partial(<built-in method close of sqlite3.Cursor object at 0x0000023BB5EECA40>)
+2026-08-27 18:30:11,903 DEBUG aiosqlite: operation functools.partial(<built-in method close of sqlite3.Cursor object at 0x0000023BB5EECA40>) completed
+2026-08-27 18:30:11,904 INFO sqlalchemy.engine.Engine: PRAGMA main.table_info("wallets")
+2026-08-27 18:30:11,904 INFO sqlalchemy.engine.Engine: [raw sql] ()
+2026-08-27 18:30:11,904 DEBUG aiosqlite: executing functools.partial(<built-in method cursor of sqlite3.Connection object at 0x0000023BB5ECE7A0>)
+2026-08-27 18:30:11,904 DEBUG aiosqlite: operation functools.partial(<built-in method cursor of sqlite3.Connection object at 0x0000023BB5ECE7A0>) completed
+2026-08-27 18:30:11,904 DEBUG aiosqlite: executing functools.partial(<built-in method execute of sqlite3.Cursor object at 0x0000023BB5EECA40>, 'PRAGMA main.table_info("wallets")', ())
+2026-08-27 18:30:11,905 DEBUG aiosqlite: operation functools.partial(<built-in method execute of sqlite3.Cursor object at 0x0000023BB5EECA40>, 'PRAGMA main.table_info("wallets")', ()) completed
+2026-08-27 18:30:11,905 DEBUG aiosqlite: executing functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x0000023BB5EECA40>)
+2026-08-27 18:30:11,905 DEBUG aiosqlite: operation functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x0000023BB5EECA40>) completed
+2026-08-27 18:30:11,905 DEBUG aiosqlite: executing functools.partial(<built-in method close of sqlite3.Cursor object at 0x0000023BB5EECA40>)
+2026-08-27 18:30:11,905 DEBUG aiosqlite: operation functools.partial(<built-in method close of sqlite3.Cursor object at 0x0000023BB5EECA40>) completed
+2026-08-27 18:30:11,906 INFO sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2026-08-27 18:30:11,906 INFO sqlalchemy.engine.Engine: [raw sql] ()
+2026-08-27 18:30:11,906 DEBUG aiosqlite: executing functools.partial(<built-in method cursor of sqlite3.Connection object at 0x0000023BB5ECE7A0>)
+2026-08-27 18:30:11,906 DEBUG aiosqlite: operation functools.partial(<built-in method cursor of sqlite3.Connection object at 0x0000023BB5ECE7A0>) completed
+2026-08-27 18:30:11,907 DEBUG aiosqlite: executing functools.partial(<built-in method execute of sqlite3.Cursor object at 0x0000023BB5EECA40>, 'PRAGMA main.table_info("transactions")', ())
+2026-08-27 18:30:11,907 DEBUG aiosqlite: operation functools.partial(<built-in method execute of sqlite3.Cursor object at 0x0000023BB5EECA40>, 'PRAGMA main.table_info("transactions")', ()) completed
+2026-08-27 18:30:11,907 DEBUG aiosqlite: executing functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x0000023BB5EECA40>)
+2026-08-27 18:30:11,908 DEBUG aiosqlite: operation functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x0000023BB5EECA40>) completed
+2026-08-27 18:30:11,908 DEBUG aiosqlite: executing functools.partial(<built-in method close of sqlite3.Cursor object at 0x0000023BB5EECA40>)
+2026-08-27 18:30:11,908 DEBUG aiosqlite: operation functools.partial(<built-in method close of sqlite3.Cursor object at 0x0000023BB5EECA40>) completed
+2026-08-27 18:30:11,908 INFO sqlalchemy.engine.Engine: PRAGMA main.table_info("ussd_sessions")
+2026-08-27 18:30:11,909 INFO sqlalchemy.engine.Engine: [raw sql] ()
+2026-08-27 18:30:11,909 DEBUG aiosqlite: executing functools.partial(<built-in method cursor of sqlite3.Connection object at 0x0000023BB5ECE7A0>)
+2026-08-27 18:30:11,909 DEBUG aiosqlite: operation functools.partial(<built-in method cursor of sqlite3.Connection object at 0x0000023BB5ECE7A0>) completed
+2026-08-27 18:30:11,909 DEBUG aiosqlite: executing functools.partial(<built-in method execute of sqlite3.Cursor object at 0x0000023BB5EECA40>, 'PRAGMA main.table_info("ussd_sessions")', ())
+2026-08-27 18:30:11,910 DEBUG aiosqlite: operation functools.partial(<built-in method execute of sqlite3.Cursor object at 0x0000023BB5EECA40>, 'PRAGMA main.table_info("ussd_sessions")', ()) completed
+2026-08-27 18:30:11,910 DEBUG aiosqlite: executing functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x0000023BB5EECA40>)
+2026-08-27 18:30:11,911 DEBUG aiosqlite: operation functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x0000023BB5EECA40>) completed
+2026-08-27 18:30:11,911 DEBUG aiosqlite: executing functools.partial(<built-in method close of sqlite3.Cursor object at 0x0000023BB5EECA40>)
+2026-08-27 18:30:11,911 DEBUG aiosqlite: operation functools.partial(<built-in method close of sqlite3.Cursor object at 0x0000023BB5EECA40>) completed
+2026-08-27 18:30:11,912 INFO sqlalchemy.engine.Engine: COMMIT
+2026-08-27 18:30:11,912 DEBUG aiosqlite: executing functools.partial(<built-in method commit of sqlite3.Connection object at 0x0000023BB5ECE7A0>)
+2026-08-27 18:30:11,913 DEBUG aiosqlite: operation functools.partial(<built-in method commit of sqlite3.Connection object at 0x0000023BB5ECE7A0>) completed
+2026-08-27 18:30:11,913 DEBUG aiosqlite: executing functools.partial(<built-in method rollback of sqlite3.Connection object at 0x0000023BB5ECE7A0>)
+2026-08-27 18:30:11,913 DEBUG aiosqlite: operation functools.partial(<built-in method rollback of sqlite3.Connection object at 0x0000023BB5ECE7A0>) completed
+2026-08-27 18:30:11,914 INFO app.main: \u2705 Database tables ready
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-08-27 18:30:38,966 ERROR app.api.at_ussd_routes: AT USSD callback error: The `python-multipart` library must be installed to use form parsing.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\sats-card-frontend\backend\app\api\at_ussd_routes.py", line 66, in at_ussd_callback
+    form = await request.form()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\requests.py", line 276, in _get_form
+    assert parse_options_header is not None, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: The `python-multipart` library must be installed to use form parsing.

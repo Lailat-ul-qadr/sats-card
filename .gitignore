@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.vscode/
+__pycache__/
+*.pyc
+satscard.db
+backend/satscard.db
+.aider*

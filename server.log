@@ -1,0 +1,199 @@
+2026-08-27 15:15:02,420 DEBUG asyncio: Using proactor: IocpProactor
+INFO:     Started server process [14600]
+INFO:     Waiting for application startup.
+2026-08-27 15:15:02,513 INFO app.main: \U0001f680 Starting Sats Card API v0.1.0
+2026-08-27 15:15:02,513 INFO app.main:    Network: mainnet
+2026-08-27 15:15:02,513 INFO app.main:    MTN env: sandbox | Airtel env: sandbox | Orange env: sandbox
+2026-08-27 15:15:02,514 DEBUG aiosqlite: executing <function connect.<locals>.connector at 0x000001A3891D0EB0>
+2026-08-27 15:15:02,515 DEBUG aiosqlite: operation <function connect.<locals>.connector at 0x000001A3891D0EB0> completed
+2026-08-27 15:15:02,516 DEBUG aiosqlite: executing functools.partial(<built-in method create_function of sqlite3.Connection object at 0x000001A3891DD8A0>, 'regexp', 2, <function SQLiteDialect_pysqlite.on_connect.<locals>.regexp at 0x000001A388A5F270>, deterministic=True)
+2026-08-27 15:15:02,521 DEBUG aiosqlite: operation functools.partial(<built-in method create_function of sqlite3.Connection object at 0x000001A3891DD8A0>, 'regexp', 2, <function SQLiteDialect_pysqlite.on_connect.<locals>.regexp at 0x000001A388A5F270>, deterministic=True) completed
+2026-08-27 15:15:02,521 DEBUG aiosqlite: executing functools.partial(<built-in method create_function of sqlite3.Connection object at 0x000001A3891DD8A0>, 'floor', 1, <built-in function floor>, deterministic=True)
+2026-08-27 15:15:02,522 DEBUG aiosqlite: operation functools.partial(<built-in method create_function of sqlite3.Connection object at 0x000001A3891DD8A0>, 'floor', 1, <built-in function floor>, deterministic=True) completed
+2026-08-27 15:15:02,522 DEBUG aiosqlite: executing functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:15:02,522 DEBUG aiosqlite: operation functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:15:02,522 DEBUG aiosqlite: executing functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A3891A5940>, 'PRAGMA read_uncommitted', [])
+2026-08-27 15:15:02,522 DEBUG aiosqlite: operation functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A3891A5940>, 'PRAGMA read_uncommitted', []) completed
+2026-08-27 15:15:02,523 DEBUG aiosqlite: executing functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A3891A5940>)
+2026-08-27 15:15:02,523 DEBUG aiosqlite: operation functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A3891A5940>) completed
+2026-08-27 15:15:02,523 DEBUG aiosqlite: executing functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A3891A5940>)
+2026-08-27 15:15:02,523 DEBUG aiosqlite: operation functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A3891A5940>) completed
+2026-08-27 15:15:02,524 DEBUG aiosqlite: executing functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:15:02,524 DEBUG aiosqlite: operation functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:15:02,525 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-08-27 15:15:02,525 INFO sqlalchemy.engine.Engine: BEGIN (implicit)
+2026-08-27 15:15:02,525 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2026-08-27 15:15:02,525 INFO sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2026-08-27 15:15:02,525 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-08-27 15:15:02,525 INFO sqlalchemy.engine.Engine: [raw sql] ()
+2026-08-27 15:15:02,526 DEBUG aiosqlite: executing functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:15:02,526 DEBUG aiosqlite: operation functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:15:02,526 DEBUG aiosqlite: executing functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A3891A5DC0>, 'PRAGMA main.table_info("users")', ())
+2026-08-27 15:15:02,528 DEBUG aiosqlite: operation functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A3891A5DC0>, 'PRAGMA main.table_info("users")', ()) completed
+2026-08-27 15:15:02,528 DEBUG aiosqlite: executing functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A3891A5DC0>)
+2026-08-27 15:15:02,528 DEBUG aiosqlite: operation functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A3891A5DC0>) completed
+2026-08-27 15:15:02,529 DEBUG aiosqlite: executing functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A3891A5DC0>)
+2026-08-27 15:15:02,529 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("wallets")
+2026-08-27 15:15:02,529 DEBUG aiosqlite: operation functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A3891A5DC0>) completed
+2026-08-27 15:15:02,529 INFO sqlalchemy.engine.Engine: PRAGMA main.table_info("wallets")
+2026-08-27 15:15:02,530 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-08-27 15:15:02,530 INFO sqlalchemy.engine.Engine: [raw sql] ()
+2026-08-27 15:15:02,530 DEBUG aiosqlite: executing functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:15:02,530 DEBUG aiosqlite: operation functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:15:02,530 DEBUG aiosqlite: executing functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A3891A5DC0>, 'PRAGMA main.table_info("wallets")', ())
+2026-08-27 15:15:02,531 DEBUG aiosqlite: operation functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A3891A5DC0>, 'PRAGMA main.table_info("wallets")', ()) completed
+2026-08-27 15:15:02,531 DEBUG aiosqlite: executing functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A3891A5DC0>)
+2026-08-27 15:15:02,531 DEBUG aiosqlite: operation functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A3891A5DC0>) completed
+2026-08-27 15:15:02,532 DEBUG aiosqlite: executing functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A3891A5DC0>)
+2026-08-27 15:15:02,532 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("transactions")
+2026-08-27 15:15:02,532 INFO sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2026-08-27 15:15:02,532 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-08-27 15:15:02,532 INFO sqlalchemy.engine.Engine: [raw sql] ()
+2026-08-27 15:15:02,532 DEBUG aiosqlite: operation functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A3891A5DC0>) completed
+2026-08-27 15:15:02,532 DEBUG aiosqlite: executing functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:15:02,532 DEBUG aiosqlite: operation functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:15:02,533 DEBUG aiosqlite: executing functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A3891A5DC0>, 'PRAGMA main.table_info("transactions")', ())
+2026-08-27 15:15:02,533 DEBUG aiosqlite: operation functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A3891A5DC0>, 'PRAGMA main.table_info("transactions")', ()) completed
+2026-08-27 15:15:02,533 DEBUG aiosqlite: executing functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A3891A5DC0>)
+2026-08-27 15:15:02,534 DEBUG aiosqlite: operation functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A3891A5DC0>) completed
+2026-08-27 15:15:02,534 DEBUG aiosqlite: executing functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A3891A5DC0>)
+2026-08-27 15:15:02,534 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("ussd_sessions")
+2026-08-27 15:15:02,534 INFO sqlalchemy.engine.Engine: PRAGMA main.table_info("ussd_sessions")
+2026-08-27 15:15:02,534 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-08-27 15:15:02,534 DEBUG aiosqlite: operation functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A3891A5DC0>) completed
+2026-08-27 15:15:02,534 INFO sqlalchemy.engine.Engine: [raw sql] ()
+2026-08-27 15:15:02,535 DEBUG aiosqlite: executing functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:15:02,535 DEBUG aiosqlite: operation functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:15:02,535 DEBUG aiosqlite: executing functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A3891A5DC0>, 'PRAGMA main.table_info("ussd_sessions")', ())
+2026-08-27 15:15:02,535 DEBUG aiosqlite: operation functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A3891A5DC0>, 'PRAGMA main.table_info("ussd_sessions")', ()) completed
+2026-08-27 15:15:02,536 DEBUG aiosqlite: executing functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A3891A5DC0>)
+2026-08-27 15:15:02,536 DEBUG aiosqlite: operation functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A3891A5DC0>) completed
+2026-08-27 15:15:02,536 DEBUG aiosqlite: executing functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A3891A5DC0>)
+2026-08-27 15:15:02,536 INFO sqlalchemy.engine.Engine COMMIT
+2026-08-27 15:15:02,536 INFO sqlalchemy.engine.Engine: COMMIT
+2026-08-27 15:15:02,537 DEBUG aiosqlite: operation functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A3891A5DC0>) completed
+2026-08-27 15:15:02,537 DEBUG aiosqlite: executing functools.partial(<built-in method commit of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:15:02,537 DEBUG aiosqlite: operation functools.partial(<built-in method commit of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:15:02,537 DEBUG aiosqlite: executing functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:15:02,537 DEBUG aiosqlite: operation functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:15:02,538 INFO app.main: \u2705 Database tables ready
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:36134 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36224 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36227 - "GET / HTTP/1.1" 200 OK
+2026-08-27 15:16:03,040 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-08-27 15:16:03,040 INFO sqlalchemy.engine.Engine: BEGIN (implicit)
+2026-08-27 15:16:03,068 INFO sqlalchemy.engine.Engine SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at 
+FROM users 
+WHERE users.phone_number = ?
+2026-08-27 15:16:03,068 INFO sqlalchemy.engine.Engine: SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at 
+FROM users 
+WHERE users.phone_number = ?
+2026-08-27 15:16:03,069 INFO sqlalchemy.engine.Engine [generated in 0.00060s] ('+250788123456',)
+2026-08-27 15:16:03,069 INFO sqlalchemy.engine.Engine: [generated in 0.00060s] ('+250788123456',)
+2026-08-27 15:16:03,070 DEBUG aiosqlite: executing functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:16:03,070 DEBUG aiosqlite: operation functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:16:03,070 DEBUG aiosqlite: executing functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A38920D440>, 'SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at \nFROM users \nWHERE users.phone_number = ?', ('+250788123456',))
+2026-08-27 15:16:03,072 DEBUG aiosqlite: operation functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A38920D440>, 'SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at \nFROM users \nWHERE users.phone_number = ?', ('+250788123456',)) completed
+2026-08-27 15:16:03,073 DEBUG aiosqlite: executing functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A38920D440>)
+2026-08-27 15:16:03,073 DEBUG aiosqlite: operation functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A38920D440>) completed
+2026-08-27 15:16:03,073 DEBUG aiosqlite: executing functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A38920D440>)
+2026-08-27 15:16:03,073 DEBUG aiosqlite: operation functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A38920D440>) completed
+2026-08-27 15:16:03,085 WARNING passlib.handlers.bcrypt: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-08-27 15:16:03,087 DEBUG passlib.handlers.bcrypt: detected 'bcrypt' backend, version '<unknown>'
+2026-08-27 15:16:03,088 DEBUG passlib.handlers.bcrypt: 'bcrypt' backend lacks $2$ support, enabling workaround
+2026-08-27 15:16:03,096 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-08-27 15:16:03,096 INFO sqlalchemy.engine.Engine: ROLLBACK
+2026-08-27 15:16:03,096 DEBUG aiosqlite: executing functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:16:03,096 DEBUG aiosqlite: operation functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:16:03,097 DEBUG aiosqlite: executing functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>)
+INFO:     127.0.0.1:36319 - "POST /api/auth/register HTTP/1.1" 400 Bad Request
+2026-08-27 15:16:03,098 DEBUG aiosqlite: operation functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:16:03,326 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-08-27 15:16:03,326 INFO sqlalchemy.engine.Engine: BEGIN (implicit)
+2026-08-27 15:16:03,326 INFO sqlalchemy.engine.Engine SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at 
+FROM users 
+WHERE users.phone_number = ?
+2026-08-27 15:16:03,326 INFO sqlalchemy.engine.Engine: SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at 
+FROM users 
+WHERE users.phone_number = ?
+2026-08-27 15:16:03,326 INFO sqlalchemy.engine.Engine [cached since 0.2581s ago] ('+250788123456',)
+2026-08-27 15:16:03,326 INFO sqlalchemy.engine.Engine: [cached since 0.2581s ago] ('+250788123456',)
+2026-08-27 15:16:03,327 DEBUG aiosqlite: executing functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:16:03,327 DEBUG aiosqlite: operation functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:16:03,327 DEBUG aiosqlite: executing functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A3892A8FC0>, 'SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at \nFROM users \nWHERE users.phone_number = ?', ('+250788123456',))
+2026-08-27 15:16:03,327 DEBUG aiosqlite: operation functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A3892A8FC0>, 'SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at \nFROM users \nWHERE users.phone_number = ?', ('+250788123456',)) completed
+2026-08-27 15:16:03,328 DEBUG aiosqlite: executing functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A3892A8FC0>)
+2026-08-27 15:16:03,328 DEBUG aiosqlite: operation functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A3892A8FC0>) completed
+2026-08-27 15:16:03,328 DEBUG aiosqlite: executing functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A3892A8FC0>)
+2026-08-27 15:16:03,328 DEBUG aiosqlite: operation functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A3892A8FC0>) completed
+2026-08-27 15:16:03,329 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-08-27 15:16:03,329 INFO sqlalchemy.engine.Engine: ROLLBACK
+2026-08-27 15:16:03,329 DEBUG aiosqlite: executing functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:16:03,329 DEBUG aiosqlite: operation functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:16:03,330 DEBUG aiosqlite: executing functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:16:03,330 DEBUG aiosqlite: operation functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+INFO:     127.0.0.1:36321 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+2026-08-27 15:16:21,455 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-08-27 15:16:21,455 INFO sqlalchemy.engine.Engine: BEGIN (implicit)
+2026-08-27 15:16:21,456 INFO sqlalchemy.engine.Engine SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at 
+FROM users 
+WHERE users.phone_number = ?
+2026-08-27 15:16:21,456 INFO sqlalchemy.engine.Engine: SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at 
+FROM users 
+WHERE users.phone_number = ?
+2026-08-27 15:16:21,456 INFO sqlalchemy.engine.Engine [cached since 18.39s ago] ('+250788123456',)
+2026-08-27 15:16:21,456 INFO sqlalchemy.engine.Engine: [cached since 18.39s ago] ('+250788123456',)
+2026-08-27 15:16:21,456 DEBUG aiosqlite: executing functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:16:21,457 DEBUG aiosqlite: operation functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:16:21,457 DEBUG aiosqlite: executing functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A38920D3C0>, 'SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at \nFROM users \nWHERE users.phone_number = ?', ('+250788123456',))
+2026-08-27 15:16:21,458 DEBUG aiosqlite: operation functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A38920D3C0>, 'SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at \nFROM users \nWHERE users.phone_number = ?', ('+250788123456',)) completed
+2026-08-27 15:16:21,458 DEBUG aiosqlite: executing functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A38920D3C0>)
+2026-08-27 15:16:21,458 DEBUG aiosqlite: operation functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A38920D3C0>) completed
+2026-08-27 15:16:21,458 DEBUG aiosqlite: executing functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A38920D3C0>)
+2026-08-27 15:16:21,459 DEBUG aiosqlite: operation functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A38920D3C0>) completed
+2026-08-27 15:16:21,460 WARNING passlib.handlers.bcrypt: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-08-27 15:16:21,461 DEBUG passlib.handlers.bcrypt: detected 'bcrypt' backend, version '<unknown>'
+2026-08-27 15:16:21,471 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-08-27 15:16:21,471 INFO sqlalchemy.engine.Engine: ROLLBACK
+2026-08-27 15:16:21,471 DEBUG aiosqlite: executing functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:16:21,472 DEBUG aiosqlite: operation functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:16:21,472 DEBUG aiosqlite: executing functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:16:21,472 DEBUG aiosqlite: operation functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+INFO:     127.0.0.1:36379 - "POST /api/auth/register HTTP/1.1" 400 Bad Request
+2026-08-27 15:16:21,713 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-08-27 15:16:21,713 INFO sqlalchemy.engine.Engine: BEGIN (implicit)
+2026-08-27 15:16:21,714 INFO sqlalchemy.engine.Engine SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at 
+FROM users 
+WHERE users.phone_number = ?
+2026-08-27 15:16:21,714 INFO sqlalchemy.engine.Engine: SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at 
+FROM users 
+WHERE users.phone_number = ?
+2026-08-27 15:16:21,714 INFO sqlalchemy.engine.Engine [cached since 18.65s ago] ('+250788123456',)
+2026-08-27 15:16:21,714 INFO sqlalchemy.engine.Engine: [cached since 18.65s ago] ('+250788123456',)
+2026-08-27 15:16:21,714 DEBUG aiosqlite: executing functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:16:21,715 DEBUG aiosqlite: operation functools.partial(<built-in method cursor of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:16:21,715 DEBUG aiosqlite: executing functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A3892A91C0>, 'SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at \nFROM users \nWHERE users.phone_number = ?', ('+250788123456',))
+2026-08-27 15:16:21,715 DEBUG aiosqlite: operation functools.partial(<built-in method execute of sqlite3.Cursor object at 0x000001A3892A91C0>, 'SELECT users.id, users.phone_number, users.name, users.email, users.pin_hash, users.is_active, users.is_verified, users.kyc_level, users.kyc_verified_at, users.preferred_currency, users.preferred_language, users.daily_limit_usd, users.monthly_limit_usd, users.country, users.last_login_at, users.last_ussd_at, users.created_at, users.updated_at \nFROM users \nWHERE users.phone_number = ?', ('+250788123456',)) completed
+2026-08-27 15:16:21,716 DEBUG aiosqlite: executing functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A3892A91C0>)
+2026-08-27 15:16:21,716 DEBUG aiosqlite: operation functools.partial(<built-in method fetchall of sqlite3.Cursor object at 0x000001A3892A91C0>) completed
+2026-08-27 15:16:21,716 DEBUG aiosqlite: executing functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A3892A91C0>)
+2026-08-27 15:16:21,716 DEBUG aiosqlite: operation functools.partial(<built-in method close of sqlite3.Cursor object at 0x000001A3892A91C0>) completed
+2026-08-27 15:16:21,717 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-08-27 15:16:21,717 INFO sqlalchemy.engine.Engine: ROLLBACK
+2026-08-27 15:16:21,718 DEBUG aiosqlite: executing functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:16:21,718 DEBUG aiosqlite: operation functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+2026-08-27 15:16:21,719 DEBUG aiosqlite: executing functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>)
+2026-08-27 15:16:21,719 DEBUG aiosqlite: operation functools.partial(<built-in method rollback of sqlite3.Connection object at 0x000001A3891DD8A0>) completed
+INFO:     127.0.0.1:36383 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
