@@ -9,18 +9,34 @@ from __future__ import annotations
 import uuid
 from datetime import datetime
 
-from sqlalchemy import String, Boolean, DateTime, Text, func
+from sqlalchemy import String, Boolean, DateTime, Text, func, TypeDecorator
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import TypeDecorator
 
 from .base import Base
+
+
+class UUID(TypeDecorator):
+    """Portable UUID type for SQLite + PostgreSQL."""
+    impl = String(36)
+    cache_ok = True
+
+    def process_bind_param(self, value, dialect):
+        if value is not None:
+            return str(value)
+        return value
+
+    def process_result_value(self, value, dialect):
+        if value is not None:
+            return uuid.UUID(value)
+        return value
 
 
 class User(Base):
     __tablename__ = "users"
 
     id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+        UUID(), primary_key=True, default=uuid.uuid4
     )
     phone_number: Mapped[str] = mapped_column(
         String(20), unique=True, index=True, nullable=False,

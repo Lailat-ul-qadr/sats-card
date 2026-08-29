@@ -180,7 +180,7 @@ export default function Spend() {
                 <div className="flex items-center gap-3 p-4 bg-elevated border border-line rounded-xl">
                   <span className="text-2xl">💳</span>
                   <div>
-                    <p className="font-semibold text-ink text-sm">Sats Card</p>
+                    <p className="font-semibold text-ink text-sm">Mobibit Africa</p>
                     <p className="text-sm text-ink-soft font-figures">**** **** **** {formData.cardLast4}</p>
                   </div>
                 </div>

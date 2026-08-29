@@ -1,17 +1,90 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, text
 from sqlalchemy.orm import declarative_base, sessionmaker
-from datetime import datetime
+from datetime import datetime, timedelta
 import subprocess
 import json
+import hashlib
+import hmac
+import secrets
 
 
 app = FastAPI(
-    title="Sats Card API",
-    description="Backend API for Sats Card",
+    title="Mobibit Africa API",
+    description="Backend API for Mobibit Africa",
     version="1.0.0"
 )
+
+# ── CORS ────────────────────────────────────────────────────────────────
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5174", "http://localhost:5175", "http://localhost:5173", "http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# ── Simple Auth (in-memory) ─────────────────────────────────────────────
+USERS_DB = {}
+SESSIONS = {}
+
+def hash_pin(pin: str) -> str:
+    return hashlib.sha256(pin.encode()).hexdigest()
+
+def verify_pin(plain: str, hashed: str) -> bool:
+    return hmac.compare_digest(hash_pin(plain), hashed)
+
+def create_session(user_id: str, phone: str) -> dict:
+    access_token = secrets.token_hex(32)
+    refresh_token = secrets.token_hex(32)
+    SESSIONS[access_token] = {"user_id": user_id, "phone": phone, "created": datetime.utcnow()}
+    SESSIONS[refresh_token] = {"user_id": user_id, "phone": phone, "created": datetime.utcnow(), "type": "refresh"}
+    return {"access_token": access_token, "refresh_token": refresh_token, "token_type": "bearer"}
+
+def get_current_user(token: str):
+    return SESSIONS.get(token)
+
+
+class RegisterRequest(BaseModel):
+    phone: str
+    pin: str
+    name: str = "User"
+    country: str = "UG"
+
+class LoginRequest(BaseModel):
+    phone: str
+    pin: str
+
+
+@app.post("/api/auth/register")
+def register(req: RegisterRequest):
+    if req.phone in USERS_DB:
+        raise HTTPException(status_code=400, detail="Phone already registered")
+    USERS_DB[req.phone] = {
+        "phone": req.phone,
+        "pin_hash": hash_pin(req.pin),
+        "name": req.name,
+        "country": req.country,
+    }
+    session = create_session(req.phone, req.phone)
+    return {
+        "user": {"id": req.phone, "phone": req.phone, "name": req.name},
+        "tokens": session,
+    }
+
+
+@app.post("/api/auth/login")
+def login(req: LoginRequest):
+    user = USERS_DB.get(req.phone)
+    if not user or not verify_pin(req.pin, user["pin_hash"]):
+        raise HTTPException(status_code=401, detail="Invalid phone or PIN")
+    session = create_session(req.phone, req.phone)
+    return {
+        "user": {"id": req.phone, "phone": req.phone, "name": user["name"]},
+        "tokens": session,
+    }
 
 
 # ============================================================
@@ -26,7 +99,7 @@ BOB_CONTAINER = "polar-n1-bob"
 # DATABASE CONFIGURATION
 # ============================================================
 
-DATABASE_URL = "sqlite:///./sats_card.db"
+DATABASE_URL = "sqlite:///./mobibit.db"
 
 engine = create_engine(
     DATABASE_URL,
@@ -118,12 +191,12 @@ def initialize_card():
 
     try:
         card = db.query(Card).filter(
-            Card.card_number == "SATSCARD-001"
+            Card.card_number == "MOBIBIT-001"
         ).first()
 
         if card is None:
             card = Card(
-                card_number="SATSCARD-001",
+                card_number="MOBIBIT-001",
                 balance_sats=0
             )
 
@@ -143,7 +216,7 @@ initialize_card()
 
 class InvoiceRequest(BaseModel):
     amount_sats: int = Field(..., gt=0)
-    memo: str = "Sats Card Payment"
+    memo: str = "Mobibit Africa Payment"
 
 
 class PaymentRequest(BaseModel):
@@ -208,7 +281,7 @@ def run_lncli_command(container: str, command: list):
 def home():
 
     return {
-        "message": "Welcome to Sats Card API",
+        "message": "Welcome to Mobibit Africa API",
         "status": "running"
     }
 
@@ -504,7 +577,7 @@ def deposit_to_card(payment_id: str):
         # ----------------------------------------------------
 
         card = db.query(Card).filter(
-            Card.card_number == "SATSCARD-001"
+            Card.card_number == "MOBIBIT-001"
         ).first()
 
 
@@ -581,7 +654,7 @@ def card_payment(request: PaymentRequest):
         # ----------------------------------------------------
 
         card = db.query(Card).filter(
-            Card.card_number == "SATSCARD-001"
+            Card.card_number == "MOBIBIT-001"
         ).first()
 
         if card is None:
@@ -686,7 +759,7 @@ def get_card_balance():
     try:
 
         card = db.query(Card).filter(
-            Card.card_number == "SATSCARD-001"
+            Card.card_number == "MOBIBIT-001"
         ).first()
 
 

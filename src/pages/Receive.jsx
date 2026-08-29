@@ -16,6 +16,7 @@ export default function Receive() {
   const [errors, setErrors] = useState({});
   const [toast, setToast] = useState({ visible: false, message: '' });
   const [timeLeft, setTimeLeft] = useState('');
+  const [pollStatus, setPollStatus] = useState('waiting'); // waiting | paid | expired
 
   // Countdown timer for invoice expiry
   useEffect(() => {
@@ -34,6 +35,31 @@ export default function Receive() {
     const id = setInterval(updateCountdown, 1000);
     return () => clearInterval(id);
   }, [invoice?.expiresAt]);
+
+  // Poll for invoice payment every 3 seconds
+  useEffect(() => {
+    if (!invoice?.paymentId || pollStatus === 'paid') return;
+
+    const pollForPayment = async () => {
+      try {
+        const result = await paymentService.checkInvoicePaid(invoice.paymentId);
+        if (result.paid) {
+          // Deposit sats to card after payment confirmed
+          try {
+            await paymentService.depositSats(invoice.paymentId);
+          } catch (_) {}
+          setPollStatus('paid');
+        }
+      } catch (err) {
+        // Silently continue polling
+      }
+    };
+
+    // Start polling immediately, then every 3 seconds
+    pollForPayment();
+    const pollId = setInterval(pollForPayment, 3000);
+    return () => clearInterval(pollId);
+  }, [invoice?.paymentId, invoice?.rHash, pollStatus]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -91,7 +117,17 @@ export default function Receive() {
         {invoice && (
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="mb-8">
             <div className="panel-elevated p-8 border-lime/20">
-              <h2 className="heading-3 mb-6">Lightning Invoice Generated</h2>
+              {pollStatus === 'paid' ? (
+                <div className="text-center">
+                  <div className="w-16 h-16 rounded-full bg-success/15 flex items-center justify-center text-3xl mx-auto mb-4">✓</div>
+                  <h2 className="heading-3 text-success mb-2">Payment Received!</h2>
+                  <p className="text-ink-soft">{Number(formData.amount).toLocaleString()} sats has been credited to your wallet.</p>
+                  <Button onClick={() => navigate('/dashboard')} className="w-full mt-6">View Dashboard</Button>
+                  <Button variant="secondary" onClick={() => { setInvoice(null); setPollStatus('waiting'); setFormData({ amount: '', description: '' }); }} className="w-full mt-2">Create Another</Button>
+                </div>
+              ) : (
+                <h2 className="heading-3 mb-6">Lightning Invoice Generated</h2>
+              )}
 
               <div className="space-y-4 mb-6">
                 <div>
@@ -131,28 +167,43 @@ export default function Receive() {
                     <span className="text-ink-muted text-xs">({formatDateTime(invoice.expiresAt)})</span>
                   </div>
                 </div>
+
+                {pollStatus === 'waiting' && (
+                  <div className="flex items-center gap-2 text-amber">
+                    <span className="animate-pulse">⏳</span>
+                    <span className="text-sm">Waiting for payment...</span>
+                  </div>
+                )}
               </div>
 
-              <Alert
-                type="success"
-                message="Invoice generated! Share this invoice with the sender. Payment will arrive instantly once settled."
-              />
+              {pollStatus === 'paid' ? (
+                <Alert type="success" title="Payment confirmed!" message="The sats have been added to your wallet balance." />
+              ) : (
+                <Alert
+                  type="info"
+                  title="Waiting for payment..."
+                  message="Share this invoice. The page will update automatically when payment arrives."
+                />
+              )}
 
-              <div className="flex gap-4 mt-6">
-                <Button onClick={() => navigate('/dashboard')} className="flex-1">
-                  Done
-                </Button>
-                <Button
-                  variant="secondary"
-                  onClick={() => {
-                    setInvoice(null);
-                    setFormData({ amount: '', description: '' });
-                  }}
-                  className="flex-1"
-                >
-                  Create Another
-                </Button>
-              </div>
+              {pollStatus !== 'paid' && (
+                <div className="flex gap-4 mt-6">
+                  <Button onClick={() => navigate('/dashboard')} className="flex-1">
+                    Done
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    onClick={() => {
+                      setInvoice(null);
+                      setPollStatus('waiting');
+                      setFormData({ amount: '', description: '' });
+                    }}
+                    className="flex-1"
+                  >
+                    Create Another
+                  </Button>
+                </div>
+              )}
             </div>
           </motion.div>
         )}

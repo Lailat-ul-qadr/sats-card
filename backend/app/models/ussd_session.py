@@ -11,11 +11,26 @@ from __future__ import annotations
 import uuid
 from datetime import datetime
 
-from sqlalchemy import String, DateTime, Text, ForeignKey, Integer, func
+from sqlalchemy import String, DateTime, Text, ForeignKey, Integer, func, TypeDecorator
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy.dialects.postgresql import UUID
 
 from .base import Base
+
+
+class UUID(TypeDecorator):
+    """Portable UUID type for SQLite + PostgreSQL."""
+    impl = String(36)
+    cache_ok = True
+
+    def process_bind_param(self, value, dialect):
+        if value is not None:
+            return str(value)
+        return value
+
+    def process_result_value(self, value, dialect):
+        if value is not None:
+            return uuid.UUID(value)
+        return value
 
 
 class USSDSession(Base):

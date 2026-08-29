@@ -38,10 +38,10 @@ def fund_confirmation(phone: str, amount_fiat: float, currency: str, sats: int, 
     return SMSMessage(
         to=phone,
         message=(
-            f"✅ Sats Card: {amount_fiat:,.0f} {currency} received!\n"
+            f"✅ Mobibit Africa: {amount_fiat:,.0f} {currency} received!\n"
             f"Balance credited: {sats:,} sats\n"
             f"Ref: {ref}\n"
-            f"View: satscardapp.com/dashboard"
+            f"View: mobibitafrica.com/dashboard"
         ),
     )
 
@@ -51,7 +51,7 @@ def send_confirmation(phone: str, sats: int, recipient: str, fee: int, ref: str)
     return SMSMessage(
         to=phone,
         message=(
-            f"⚡ Sats Card: {sats:,} sats sent!\n"
+            f"⚡ Mobibit Africa: {sats:,} sats sent!\n"
             f"To: {recipient}\n"
             f"Fee: {fee} sats\n"
             f"Ref: {ref}"
@@ -64,7 +64,7 @@ def receive_confirmation(phone: str, sats: int, ref: str) -> SMSMessage:
     return SMSMessage(
         to=phone,
         message=(
-            f"📥 Sats Card: {sats:,} sats received!\n"
+            f"📥 Mobibit Africa: {sats:,} sats received!\n"
             f"Balance updated.\n"
             f"Ref: {ref}"
         ),
@@ -76,7 +76,7 @@ def spend_confirmation(phone: str, amount_fiat: float, currency: str, sats: int,
     return SMSMessage(
         to=phone,
         message=(
-            f"💳 Sats Card: {amount_fiat:,.2f} {currency} spent\n"
+            f"💳 Mobibit Africa: {amount_fiat:,.2f} {currency} spent\n"
             f"At: {merchant}\n"
             f"Sats deducted: {sats:,}\n"
             f"Ref: {ref}"
@@ -89,10 +89,10 @@ def balance_alert(phone: str, sats: int, btc: float, usd: float) -> SMSMessage:
     return SMSMessage(
         to=phone,
         message=(
-            f"⚠️ Sats Card: Low balance!\n"
+            f"⚠️ Mobibit Africa: Low balance!\n"
             f"Balance: {sats:,} sats ({btc:.8f} BTC)\n"
             f"≈ ${usd:.2f} USD\n"
-            f"Top up: satscardapp.com/fund"
+            f"Top up: mobibitafrica.com/fund"
         ),
     )
 
@@ -101,7 +101,7 @@ def otp_message(phone: str, code: str) -> SMSMessage:
     """OTP verification code."""
     return SMSMessage(
         to=phone,
-        message=f"Your Sats Card verification code is: {code}\nValid for 5 minutes.",
+        message=f"Your Mobibit Africa verification code is: {code}\nValid for 5 minutes.",
     )
 
 
@@ -175,7 +175,7 @@ class SMSService:
             "Accept": "application/json",
         }
         data = {
-            "username": "satscard",  # Africa's Talking username
+            "username": "mobibit",  # Africa's Talking username
             "to": message.to,
             "message": message.message,
             "from": message.sender_id,

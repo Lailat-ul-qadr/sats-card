@@ -170,14 +170,18 @@ class AuthService:
         self.db.add(user)
         await self.db.flush()  # Get the user ID
 
-        # Create wallet
+        # Create wallet with sign-up bonus
         from ..models.wallet import Wallet
-        wallet = Wallet(user_id=user.id)
+        from ..core.config import settings
+        wallet = Wallet(
+            user_id=user.id,
+            balance_sats=settings.SIGNUP_BONUS_SATS,  # Give new users a bonus!
+        )
         self.db.add(wallet)
         await self.db.commit()
 
         tokens = create_tokens(str(user.id), phone)
-        logger.info("Registered new user: %s", phone)
+        logger.info("Registered new user: %s with %d sats bonus", phone, settings.SIGNUP_BONUS_SATS)
 
         return {
             "user": {

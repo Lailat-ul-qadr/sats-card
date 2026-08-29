@@ -14,7 +14,7 @@ export const Logo = ({ size = 'md', className = '' }) => {
       <div className={`${sizes[size]} rounded-xl bg-amber-lime flex items-center justify-center font-display font-bold text-bg shrink-0`}>
         ⚡
       </div>
-      <span className="font-display font-bold text-ink tracking-tight text-lg">Sats Card</span>
+      <span className="font-display font-bold text-ink tracking-tight text-lg">Mobibit Africa</span>
     </div>
   );
 };
@@ -178,10 +178,19 @@ export const Alert = ({ type = 'info', title, message, onClose, className = '' }
     info: 'bg-info/10 border-l-4 border-info text-info',
   };
 
+  // Support multiline messages by splitting on \n
+  const lines = (message || '').split('\n').filter(Boolean);
+
   return (
     <div className={`${alertStyles[type]} p-4 rounded-lg ${className}`}>
       {title && <h4 className="font-semibold mb-1">{title}</h4>}
-      <p className="text-sm text-ink-soft">{message}</p>
+      {lines.length > 1 ? (
+        <div className="text-sm text-ink-soft space-y-1">
+          {lines.map((line, i) => <p key={i}>{line}</p>)}
+        </div>
+      ) : (
+        <p className="text-sm text-ink-soft">{message}</p>
+      )}
       {onClose && (
         <button onClick={onClose} className="ml-4 font-semibold">✕</button>
       )}

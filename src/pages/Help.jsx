@@ -46,8 +46,8 @@ export default function Help() {
         <div className="grid md:grid-cols-3 gap-4 mb-12">
           {[
             { icon: '💬', title: 'Contact Support', sub: 'Chat with our team' },
-            { icon: '📧', title: 'Email Us', sub: 'support@satscardapp.com' },
-            { icon: '📱', title: 'Call Us', sub: '+1-800-SATSCARD' },
+            { icon: '📧', title: 'Email Us', sub: 'support@mobibitafrica.com' },
+            { icon: '📱', title: 'Call Us', sub: '+1-800-MOBIBIT' },
           ].map(action => (
             <motion.button
               key={action.title}

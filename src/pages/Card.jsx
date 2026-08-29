@@ -37,7 +37,7 @@ export default function Card() {
 
   return (
     <div className="min-h-screen bg-noise-grid">
-      <PageHeader title="Sats Card" onBack={() => navigate(-1)} />
+      <PageHeader title="Mobibit Africa" onBack={() => navigate(-1)} />
 
       <motion.div
         className="max-w-2xl mx-auto px-4 sm:px-6 py-12"
