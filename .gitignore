@@ -1,5 +1,60 @@
+# ── Dependencies ──────────────────────────────────────────────────
+node_modules/
 venv/
+.venv/
+env/
+
+# ── Build Output ──────────────────────────────────────────────────
+dist/
+build/
+*.egg-info/
+
+# ── Python ────────────────────────────────────────────────────────
 __pycache__/
 *.pyc
-sats_card.db
+*.pyo
+*.pyd
+.Python
+
+# ── Environment & Secrets ─────────────────────────────────────────
 .env
+.env.local
+.env.*.local
+
+# ── Databases ─────────────────────────────────────────────────────
+*.db
+*.sqlite3
+*.sqlite
+
+# ── Logs ──────────────────────────────────────────────────────────
+*.log
+logs/
+npm-debug.log*
+
+# ── OS & Editor ───────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Tools & Utilities (binaries, archives) ─────────────────────────
+*.exe
+*.zip
+*.tar.gz
+*.rar
+
+# ── AI Tool Artifacts ─────────────────────────────────────────────
+.aider*
+.aider.tags.cache.v4/
+.agents/
+
+# ── Test & Coverage ───────────────────────────────────────────────
+coverage/
+.nyc_output/
+
+# ── Misc ──────────────────────────────────────────────────────────
+*.pem
+*.key

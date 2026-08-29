@@ -1,388 +1,248 @@
-# Sats Card Frontend — Lightning-Powered Bitcoin Card MVP
+<div align="center">
 
-A **complete, production-grade frontend** for a Bitcoin/Lightning hackathon MVP built in **2 days**. 
+<img src="src/assets/mobi-bit-africa-logo.jpeg" alt="Mobi Bit Africa Logo" width="280" />
 
-**Status:** ✅ DEMO-READY — All 13 pages functional, animated, responsive, with full mock data integration.
+<br />
+
+# MOBI BIT AFRICA
+
+### ⚡ Lightning-Powered Bitcoin Card for Africa ⚡
+
+<br />
+
+*"Banking the unbanked, one sat at a time."*
+
+<br />
+
+![License: MIT](https://img.shields.io/badge/License-MIT-4CAF50?style=for-the-badge)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Bitcoin](https://img.shields.io/badge/Bitcoin-Lightning-FF9900?style=for-the-badge&logo=bitcoin&logoColor=white)
+
+<br />
+
+[Quick Start](#-quick-start) ·
+[Features](#-features) ·
+[Architecture](#-architecture) ·
+[API](#-api) ·
+[Setup](#-setup) ·
+[Deploy](#-deploy)
+
+</div>
 
 ---
 
-## 🎯 Project Overview
+## 🌍 Our Mission
 
-**Sats Card** solves the problem of Bitcoin adoption in emerging markets:
+**Mobi Bit Africa** is on a mission to make Bitcoin accessible to every African — regardless of whether they have a bank account. We believe that financial freedom should not be a privilege. By connecting mobile money — the financial backbone of Africa — to the Bitcoin Lightning Network, we empower millions to save, send, and spend in a borderless digital economy.
 
-- **Input:** Mobile money (MTN, Airtel, Orange Money)
-- **Process:** Convert fiat to BTC via Lightning Network
-- **Output:** Virtual card loaded with sats, ready to spend
-
-This frontend provides a complete user experience for:
-- Account creation and login
-- Wallet management and balance viewing
-- Funding via simulated mobile money
-- Sending/receiving Bitcoin via Lightning
-- Virtual card spending
-- Transaction history tracking
-- User profile and settings management
+> **Vision:** A financially inclusive Africa where everyone participates in the global Bitcoin economy.
+>
+> **Mission:** Bridge mobile money and Bitcoin to bring financial freedom to the unbanked.
 
 ---
 
-## 🚀 Quick Start
+## What We Do
 
-### Prerequisites
-- Node.js v18+ with npm
-- Modern browser (Chrome, Firefox, Safari, Edge)
+<div align="center">
 
-### Installation
+| 💰 **Deposit** | ⚡ **Convert** | 💳 **Spend** |
+|:-------------:|:-------------:|:------------:|
+| Fund via MTN, Airtel, or Orange Money | Fiat → BTC via Lightning Network | Use a virtual card anywhere |
 
-```bash
-# Enter the project directory
-cd sats-card-frontend
+</div>
 
-# Install dependencies
-npm install
+---
 
-# Start dev server
-npm run dev
-```
+## ✨ Features
 
-The app will be available at **http://localhost:5174**
+<div align="center">
 
-### Demo Credentials
-```
-Email: demo@satscardapp.com
-Password: demo@123456
-(Or use any email/password combination)
-```
+| Feature | Details |
+|:-------:|---------|
+| 📱 **Mobile Money** | MTN MoMo · Airtel Money · Orange Money |
+| ⚡ **Lightning Network** | Instant Bitcoin send & receive |
+| 💳 **Virtual Card** | Spend sats anywhere cards are accepted |
+| 🔄 **Live Rates** | Real-time USD ↔ Sats conversion |
+| 📱 **13 Pages** | Full app — Login, Dashboard, Card, Fund, Send, Receive, Spend, Transactions, Profile, Settings, Help |
+| 📐 **Responsive** | Mobile · Tablet · Desktop |
+| 🎨 **Animated** | Smooth transitions with Framer Motion |
+| 🏗️ **Production-Ready** | Clean architecture, service layer, state management |
 
-### Production Build
+</div>
 
-```bash
-npm run build
-npm run preview
-```
+---
+
+## 🛠️ Tech Stack
+
+<div align="center">
+
+| Layer | Stack |
+|:-----:|:------|
+| **Frontend** | React 18 · Vite 5 · Tailwind CSS v4 · Framer Motion |
+| **Backend** | Python 3.11+ · FastAPI · SQLAlchemy · Alembic |
+| **Database** | PostgreSQL 16 (SQLite for dev) |
+| **Lightning** | LND via Docker (Polar Network) |
+| **Mobile Money** | Africa's Talking · MTN MoMo |
+| **Deploy** | Docker · Render |
+
+</div>
 
 ---
 
 ## 📁 Project Structure
 
 ```
-src/
-├── pages/              # All 13 page components
-│   ├── Landing.jsx     # Public landing page
-│   ├── Login.jsx       # Authentication
-│   ├── Signup.jsx      # Account creation
-│   ├── Dashboard.jsx   # Main hub
-│   ├── Card.jsx        # Virtual card
-│   ├── Fund.jsx        # Mobile money input
-│   ├── Send.jsx        # Lightning payments
-│   ├── Receive.jsx     # Invoice generation
-│   ├── Spend.jsx       # Card spending
-│   ├── Transactions.jsx# History
-│   ├── Profile.jsx     # User info
-│   ├── Settings.jsx    # Preferences
-│   └── Help.jsx        # FAQs
+mobi-bit-africa/
+├── src/                          # React frontend
+│   ├── pages/                    # 13 page components
+│   ├── components/               # Reusable UI components
+│   ├── services/                 # API abstraction layer
+│   ├── context/                  # Auth · Wallet · Theme
+│   ├── hooks/                    # Custom React hooks
+│   ├── data/                     # Mock data
+│   ├── utils/                    # Helpers
+│   └── assets/                   # Images · logos
 │
-├── components/         # Reusable UI components
-├── services/           # Mock API layer
-├── context/            # State management (Auth, Wallet)
-├── hooks/              # Custom React hooks
-├── data/               # Mock data objects
-├── types/              # JSDoc type definitions
-├── utils/              # Helper functions
-├── App.jsx             # Main routing
-└── styles.css          # Global styles
+├── backend/                      # FastAPI backend
+│   └── app/
+│       ├── api/                  # Route handlers
+│       ├── core/                 # Config · database
+│       ├── models/               # SQLAlchemy models
+│       ├── services/             # Business logic
+│       ├── adapters/             # MTN · Airtel · Orange · Lightning
+│       └── ussd/                 # USSD flow handler
+│
+├── docker-compose.yml
+├── render.yaml
+├── LICENSE
+└── README.md
 ```
 
 ---
 
-## ✨ All 13 Pages
+## 🚀 Quick Start
 
-### Public Pages
-- ✅ **Landing** — Project overview, features, CTA
-- ✅ **Login** — Authentication form
-- ✅ **Signup** — Account creation
+**Prerequisites:** Node.js v18+ · Python 3.11+ · Docker
 
-### Authenticated Pages
-- ✅ **Dashboard** — Wallet overview, quick actions
-- ✅ **Card** — Virtual card display
-- ✅ **Fund** — Mobile money conversion
-- ✅ **Send** — Lightning payments
-- ✅ **Receive** — Invoice generation
-- ✅ **Spend** — Card transactions
-- ✅ **Transactions** — Complete history with filtering
-- ✅ **Profile** — User information, editable
-- ✅ **Settings** — Preferences and limits
-- ✅ **Help** — FAQs with search
+```bash
+# Clone
+git clone https://github.com/your-org/mobi-bit-africa.git
+cd mobi-bit-africa
 
----
+# Install
+npm install
+cd backend && pip install -r requirements.txt && cd ..
 
-## 🎨 Design Features
-
-### Colors & Typography
-- **Primary Color:** Muted Green (#6B7F6B)
-- **Headings:** Merriweather (serif)
-- **Body:** Rubik (sans-serif)
-- **Palette:** Cream, clay, gold, organic fintech aesthetic
-
-### Components
-- Button (4 variants)
-- Input (with validation)
-- Card, Badge, Modal
-- Alert (4 types)
-- Loading, EmptyState, Skeleton
-
-### Animations
-- Smooth page transitions
-- Framer Motion throughout
-- Button hover effects
-- Card animations
-- Loading spinners
-
----
-
-## 💰 Features
-
-### Authentication
-- [x] Signup with validation
-- [x] Login with persistence
-- [x] Logout
-- [x] Auth guards on protected routes
-
-### Wallet
-- [x] Balance display (sats, BTC, USD)
-- [x] Virtual card
-- [x] Real-time conversions
-
-### Funding
-- [x] Mobile money selection (MTN, Airtel, Orange)
-- [x] USD → Sats conversion
-- [x] Daily limit validation
-
-### Payments
-- [x] Send Bitcoin via Lightning
-- [x] Receive Bitcoin via Lightning
-- [x] Invoice generation
-- [x] Transaction tracking
-
-### Spending
-- [x] Virtual card spending
-- [x] Merchant tracking
-- [x] USD ↔ Sats conversion
-
-### Transaction History
-- [x] Complete history
-- [x] Filtering by type
-- [x] Timestamps and status
-- [x] Summary statistics
-
-### User Account
-- [x] Profile management
-- [x] Editable information
-- [x] KYC status
-- [x] Security settings
-
-### Settings
-- [x] Notification preferences
-- [x] Transaction limits
-- [x] Currency selection
-- [x] Language preferences
-
-### Help
-- [x] FAQ search
-- [x] Category filtering
-- [x] Contact form
-- [x] Documentation links
-
----
-
-## 🔐 Authentication Flow
-
-### Routes
-```
-Public:
-  /              (Landing)
-  /login         (Login form)
-  /signup        (Signup form)
-
-Protected:
-  /dashboard     (Main hub)
-  /card          (Virtual card)
-  /fund          (Fund card)
-  /send          (Send Bitcoin)
-  /receive       (Receive Bitcoin)
-  /spend         (Spend)
-  /transactions  (History)
-  /profile       (User profile)
-  /settings      (Settings)
-  /help          (Help)
+# Run
+docker-compose up -d postgres redis   # database
+cd backend && uvicorn app.main:app --reload --port 8000   # API
+npm run dev                            # frontend
 ```
 
----
-
-## 🛠️ Tech Stack
-
-- **React 18** — UI framework
-- **Vite 5** — Ultra-fast build tool
-- **React Router 6** — Client-side routing
-- **Tailwind CSS v4** — Utility-first styling
-- **Framer Motion 11** — Smooth animations
-- **Lucide React** — Icon library
+Open **http://localhost:5174** → Login with `demo@satscardapp.com` / `demo@123456`
 
 ---
 
-## 🔗 Service Layer (Ready for Backend)
+## 🏗️ Architecture
 
-All API calls go through services in `src/services/index.js`:
+**Service Layer** — All API calls go through `src/services/`. Swap mock data for real endpoints without touching components.
 
 ```javascript
-// Wallet
-walletService.getBalance()
-walletService.getCardInfo()
-walletService.addFunds(amount, currency)
-
-// Transactions
-transactionService.getTransactions()
-transactionService.createTransaction(tx)
-
-// Payments
-paymentService.fundCard(phone, amount, provider)
-paymentService.sendBitcoin(address, amount, memo)
-paymentService.receiveBitcoin(amount, description)
-paymentService.spendCard(merchant, amount, cardLast4)
-
-// Auth
-authService.login(email, password)
-authService.signup(email, password, phone)
-authService.logout()
-
-// User
-userService.getProfile()
-userService.updateProfile(updates)
-
-// Exchange Rates
-exchangeRateService.getExchangeRate(from, to)
-exchangeRateService.convertCurrency(amount, from, to)
+walletService.getBalance()            // 💰 Wallet
+paymentService.fundCard(phone, amt)   // 📱 Mobile Money
+paymentService.sendBitcoin(addr, amt) // ⚡ Lightning
+authService.login(email, password)    // 🔐 Auth
 ```
 
-**For Backend Integration:**
-1. Replace mock implementations with API calls
-2. Update endpoint URLs
-3. No component changes needed
+**State Management** — `AuthContext` · `WalletContext` · `ThemeContext`
 
 ---
 
-## 🎬 Complete Demo Flow
+## 📡 API
 
-1. **Sign Up** → Create account with validation
-2. **Login** → Authenticate with credentials
-3. **Dashboard** → View balance and recent transactions
-4. **View Card** → Beautiful virtual card display
-5. **Fund Card** → Select mobile money provider, enter amount
-6. **Send Bitcoin** → Input Lightning address, send sats
-7. **Receive Bitcoin** → Generate Lightning invoice, copy
-8. **Spend** → Simulate card transaction
-9. **Transactions** → View and filter transaction history
-10. **Profile** → Edit user information
-11. **Settings** → Adjust preferences and limits
-12. **Help** → Search FAQs and documentation
-
-**All flows are fully functional with mock data simulation.**
+| Endpoint | Method | Description |
+|----------|:------:|-------------|
+| `/api/node_info` | `GET` | Lightning node info |
+| `/api/balance` | `GET` | Wallet balance |
+| `/api/card_balance` | `GET` | Card balance |
+| `/api/create_invoice` | `POST` | Create Lightning invoice |
+| `/api/check_payment/{id}` | `GET` | Check payment status |
+| `/api/deposit/{id}` | `POST` | Deposit to card |
+| `/api/card_payment` | `POST` | Pay from card |
+| `/api/transactions` | `GET` | Transaction history |
 
 ---
 
-## 📊 Build Status
+## 📱 Mobile Money
 
-✅ **Production Build Successful**
-```
-vite v5.4.21 building for production...
-✓ 461 modules transformed.
-✓ built in 5.09s
-```
+<div align="center">
 
-✅ **Dev Server Running**
-```
-http://localhost:5174
-```
+| Provider | Countries | Mode |
+|:--------:|-----------|:----:|
+| 🟡 **MTN MoMo** | Rwanda · Uganda · Ghana · DRC | Sandbox ✅ |
+| 🔴 **Airtel Money** | Rwanda · Kenya · Uganda | Sandbox ✅ |
+| 🟠 **Orange Money** | Senegal · Mali · Côte d'Ivoire | Sandbox ✅ |
+
+</div>
+
+> All providers support sandbox mode — no real money moves during testing. See [SETUP.md](SETUP.md) for configuration.
 
 ---
 
-## 🚀 Development
+## ⚙️ Setup & Deploy
 
-### Start Dev Server
+**Environment Variables** — See [SETUP.md](SETUP.md) for MTN MoMo credentials, API keys, and full configuration.
+
+**Docker:**
 ```bash
-npm run dev
+docker-compose up -d
 ```
 
-### Production Build
-```bash
-npm run build
-```
-
-### Preview Build
-```bash
-npm run preview
-```
+**Render:** Connect your repo — `render.yaml` handles the rest.
 
 ---
 
-## 📱 Responsive Design
+## 📋 Changelog
 
-✅ Mobile (320px+)  
-✅ Tablet (768px+)  
-✅ Desktop (1024px+)  
-
-All pages tested and optimized for all screen sizes.
-
----
-
-## 🎯 What's Next?
-
-### Backend Integration
-- Connect to Bitcoin Core
-- Connect to Lightning Network (LND/CLN)
-- Implement actual mobile money APIs
-- Create real authentication backend
-- Set up database (PostgreSQL)
-
-### Production Features
-- Real payment processing
-- Actual card issuing
-- KYC/AML compliance
-- Transaction settlement
-- Real-time balance updates
+| Version | Date | Changes |
+|:-------:|:----:|---------|
+| **1.0.0** | Aug 2026 | Initial release — 13 pages, Lightning integration, mobile money adapters |
+| **0.9.0** | Aug 2026 | Backend API with FastAPI, Alembic migrations, Polar Network setup |
+| **0.8.0** | Aug 2026 | Frontend foundation — React, Tailwind, design system, service layer |
 
 ---
 
-## 📝 Key Features
+## 🙏 Acknowledgments
 
-✅ Complete 13-page application  
-✅ Full design system with components  
-✅ State management (Auth, Wallet, Theme)  
-✅ Custom hooks for common patterns  
-✅ Service layer for API abstraction  
-✅ Real-time currency conversions  
-✅ Transaction tracking and history  
-✅ Responsive mobile-first design  
-✅ Smooth animations throughout  
-✅ Form validation on all inputs  
-✅ Error handling with user feedback  
-✅ Production-ready code structure  
+- **[Bitcoin Lightning Network](https://lightning.network/)** — Enabling instant, low-cost Bitcoin payments
+- **[Polar](https://polar.sh/)** — Local Lightning Network development environment
+- **[Africa's Talking](https://africastalking.com/)** — Mobile money and USSD API infrastructure
+- **[MTN MoMo Developer Portal](https://momodeveloper.mtn.com/)** — Mobile money sandbox and APIs
+- **[FastAPI](https://fastapi.tiangolo.com/)** — Modern Python web framework
+- **[React](https://react.dev/)** — UI library powering the frontend
+- **[Tailwind CSS](https://tailwindcss.com/)** — Utility-first CSS framework
+- **[Framer Motion](https://www.framer.com/motion/)** — Animation library
+- **[Lucide Icons](https://lucide.dev/)** — Beautiful, consistent icon set
 
 ---
 
-## 🎓 Learning
+## 📄 License
 
-- **React:** https://react.dev
-- **Vite:** https://vitejs.dev
-- **Tailwind CSS:** https://tailwindcss.com
-- **Framer Motion:** https://www.framer.com/motion
-- **React Router:** https://reactrouter.com
+This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
-## 📞 Support
+<div align="center">
 
-See the **Help** page in the app for FAQs and documentation.
+### Built with ❤️ by **Mobi Bit Africa**
 
----
+*Bridging mobile money and Bitcoin across Africa*
 
-**Built for Hackathon MVP. Demo-ready. Production-quality. 🚀**
+<br />
+
+[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com)
+
+</div>

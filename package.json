@@ -1,13 +1,22 @@
 {
-  "name": "sats-card-frontend",
-  "version": "0.1.0",
+  "name": "mobi-bit-africa",
+  "version": "1.0.0",
+  "description": "Lightning-Powered Bitcoin Virtual Card for Africa — Convert mobile money to BTC via Lightning Network and spend from a virtual card",
   "private": true,
+  "license": "MIT",
+  "author": "Mobi Bit Africa",
+  "homepage": "https://github.com/your-org/mobi-bit-africa#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/mobi-bit-africa.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "lint": "eslint src/ --ext .js,.jsx"
   },
   "dependencies": {
     "autoprefixer": "^10.5.4",
@@ -28,5 +37,8 @@
     "jsdom": "^29.1.1",
     "vite": "^5.0.0",
     "vitest": "^4.1.11"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
