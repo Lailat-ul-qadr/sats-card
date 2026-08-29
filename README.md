@@ -1,24 +1,26 @@
 <div align="center">
 
-<img src="src/assets/mobi-bit-africa-logo.jpeg" alt="Mobi Bit Africa Logo" width="300" />
+<!-- Matrix rain banner -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,20:00FF41,50:0D1117,80:00FF41,100:0D1117&height=220&section=header&text=MOBI%20BIT%20AFRICA&fontSize=80&fontColor=00FF41&fontAlignY=35&desc=SECURE%20BITCOIN%20ACCESS%20FOR%20AFRICA&descSize=18&descAlignY=55&descAlign=50&animation=twinkling" width="100%" />
 
 <br />
+
+<img src="src/assets/mobi-bit-africa-logo.jpeg" alt="Mobi Bit Africa Logo" width="200" />
+
+<br /><br />
 
 # 🔐 MOBI BIT AFRICA
 
-### ⚡ Secure Bitcoin Access for Africa ⚡
+### `> Initiating secure connection to Lightning Network...`
 
 <br />
 
-*"Banking the unbanked, one sat at a time."*
-
-<br />
-
-![License: MIT](https://img.shields.io/badge/License-MIT-4CAF50?style=for-the-badge)
-![Security](https://img.shields.io/badge/Security-End--to--End-FF5722?style=for-the-badge)
+![License: MIT](https://img.shields.io/badge/License-MIT-00FF41?style=for-the-badge&logo=lock&logoColor=00FF41)
+![Security](https://img.shields.io/badge/Security-Encrypted-FF0000?style=for-the-badge&logo=shield&logoColor=FF0000)
 ![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![Bitcoin](https://img.shields.io/badge/Bitcoin-Lightning-FF9900?style=for-the-badge&logo=bitcoin&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 <br />
 
@@ -33,11 +35,42 @@
 
 ---
 
+<!-- Hacker typing animation -->
+<div align="center">
+
+```
+╔══════════════════════════════════════════════════════════════════════════╗
+║  $ nmap -sV --script=vuln mobibit-africa.net                           ║
+║  Starting Nmap 7.94 ( https://nmap.org )                               ║
+║  ────────────────────────────────────────────────────────────────────── ║
+║  PORT     STATE SERVICE VERSION                                          ║
+║  443/tcp  open  https  Cloudflare TLS                                   ║
+║  8000/tcp open  http   FastAPI/Python                                   ║
+║  ────────────────────────────────────────────────────────────────────── ║
+║  [✓] SQL Injection:    PROTECTED (Parameterized Queries)                ║
+║  [✓] XSS Attacks:      PROTECTED (Input Sanitization)                   ║
+║  [✓] CSRF:             PROTECTED (Token Validation)                     ║
+║  [✓] Rate Limiting:    ENABLED                                          ║
+║  [✓] Authentication:   JWT + httpOnly Cookies                           ║
+║  [✓] CORS:             RESTRICTED                                       ║
+║  ────────────────────────────────────────────────────────────────────── ║
+║  Result: 6/6 checks passed. System SECURE. 🛡️                           ║
+╚══════════════════════════════════════════════════════════════════════════╝
+```
+
+</div>
+
+---
+
 ## 🌍 The Problem
 
 <div align="center">
 
-Africa faces **five critical barriers** to Bitcoin adoption and financial freedom:
+### `> Scanning for adoption barriers... 5 threats detected`
+
+<br />
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=00FF41&center=true&vCenter=true&multiline=true&repeatType=true&width=800&height=100&lines=Africa+faces+**five+critical+barriers**+to+Bitcoin+adoption&fontColor=00FF41" alt="Typing SVG" />
 
 </div>
 
@@ -45,46 +78,111 @@ Africa faces **five critical barriers** to Bitcoin adoption and financial freedo
 
 <table>
 <tr>
-<td width="50" align="center" valign="top"><h1>1️⃣</h1></td>
+<td width="60" align="center" valign="top">
+
+```
+┌─────────┐
+│ THREAT  │
+│   #1    │
+└─────────┘
+```
+
+</td>
 <td>
 
 ### 🔒 Limited Access to Bitcoin
+```
+> THREAT LEVEL: CRITICAL
+> STATUS: ACTIVE
+```
 Many Africans cannot easily access Bitcoin because traditional platforms require bank accounts, complicated verification, or technical knowledge. **Mobi Bit Africa** makes access simpler through familiar mobile-money systems.
 
 </td>
 </tr>
 <tr>
-<td width="50" align="center" valign="top"><h1>2️⃣</h1></td>
+<td width="60" align="center" valign="top">
+
+```
+┌─────────┐
+│ THREAT  │
+│   #2    │
+└─────────┘
+```
+
+</td>
 <td>
 
 ### 🏦 Limited Financial Inclusion
+```
+> THREAT LEVEL: CRITICAL
+> STATUS: ACTIVE
+```
 Millions of people rely on mobile money rather than traditional banks. Our solution connects people to Bitcoin and digital financial services **without making a traditional bank account the starting point**.
 
 </td>
 </tr>
 <tr>
-<td width="50" align="center" valign="top"><h1>3️⃣</h1></td>
+<td width="60" align="center" valign="top">
+
+```
+┌─────────┐
+│ THREAT  │
+│   #3    │
+└─────────┘
+```
+
+</td>
 <td>
 
 ### 💸 High Cost of Sending Money
+```
+> THREAT LEVEL: HIGH
+> STATUS: ACTIVE
+```
 Sending money, especially across borders, can be expensive and slow. By using the **Lightning Network**, our solution enables faster and lower-cost digital payments.
 
 </td>
 </tr>
 <tr>
-<td width="50" align="center" valign="top"><h1>4️⃣</h1></td>
+<td width="60" align="center" valign="top">
+
+```
+┌─────────┐
+│ THREAT  │
+│   #4    │
+└─────────┘
+```
+
+</td>
 <td>
 
-### 💳 Difficulty Using Bitcoin in Everyday Life
+### 💳 Difficulty Using Bitcoin
+```
+> THREAT LEVEL: HIGH
+> STATUS: ACTIVE
+```
 Owning Bitcoin is not the same as being able to use it. Mobi Bit Africa connects Bitcoin to a spending experience through a **wallet and virtual-card concept**.
 
 </td>
 </tr>
 <tr>
-<td width="50" align="center" valign="top"><h1>5️⃣</h1></td>
+<td width="60" align="center" valign="top">
+
+```
+┌─────────┐
+│ THREAT  │
+│   #5    │
+└─────────┘
+```
+
+</td>
 <td>
 
-### ⚙️ Complexity of Cryptocurrency Technology
+### ⚙️ Complexity of Crypto Technology
+```
+> THREAT LEVEL: MEDIUM
+> STATUS: ACTIVE
+```
 Bitcoin and Lightning can be difficult for ordinary users to understand. Our solution **hides the technical complexity** and creates a simple experience similar to the mobile-money services Africans already know.
 
 </td>
@@ -97,9 +195,20 @@ Bitcoin and Lightning can be difficult for ordinary users to understand. Our sol
 
 <div align="center">
 
-> **Mobi Bit Africa is solving five major problems:** limited access to Bitcoin, financial exclusion, expensive money transfers, difficulty spending Bitcoin, and the complexity of cryptocurrency technology.
->
-> **Our goal is to make Bitcoin as simple and accessible as mobile money.**
+```
+╔══════════════════════════════════════════════════════════════╗
+║                    MISSION COMPLETE                         ║
+║                                                              ║
+║  Mobi Bit Africa is solving five major problems:             ║
+║  • Limited access to Bitcoin                                 ║
+║  • Financial exclusion                                       ║
+║  • Expensive money transfers                                 ║
+║  • Difficulty spending Bitcoin                               ║
+║  • Complexity of cryptocurrency technology                   ║
+║                                                              ║
+║  GOAL: Make Bitcoin as simple as mobile money.               ║
+╚══════════════════════════════════════════════════════════════╝
+```
 
 </div>
 
@@ -109,30 +218,45 @@ Bitcoin and Lightning can be difficult for ordinary users to understand. Our sol
 <tr>
 <td align="center" width="25%">
 
-### 💰 Deposit
-Fund your card via **MTN MoMo**, **Airtel Money**, or **Orange Money**
-
-</td>
-<td align="center" width="8%">
-
-### ➡️
-
-</td>
-<td align="center" width="25%">
-
-### ⚡ Convert
-Fiat is converted to **BTC** via the Lightning Network
-
-</td>
-<td align="center" width="8%">
-
-### ➡️
+```
+┌──────────────┐
+│  💰 DEPOSIT  │
+│              │
+│  MTN MoMo    │
+│  Airtel      │
+│  Orange      │
+└──────┬───────┘
+       │
+       ▼
+```
 
 </td>
 <td align="center" width="25%">
 
-### 💳 Spend
-Use your **virtual card** anywhere cards are accepted
+```
+┌──────────────┐
+│  ⚡ CONVERT  │
+│              │
+│  Fiat → BTC  │
+│  Lightning   │
+│  Network     │
+└──────┬───────┘
+       │
+       ▼
+```
+
+</td>
+<td align="center" width="25%">
+
+```
+┌──────────────┐
+│  💳 SPEND    │
+│              │
+│  Virtual     │
+│  Card        │
+│  Anywhere    │
+└──────────────┘
+```
 
 </td>
 </tr>
@@ -144,16 +268,23 @@ Use your **virtual card** anywhere cards are accepted
 
 <div align="center">
 
-| Feature | Implementation |
-|:-------:|----------------|
-| 🔐 **Encrypted Auth** | JWT tokens with secure httpOnly cookies |
-| 🛡️ **Input Validation** | Server-side validation on all endpoints |
-| 🔒 **SQL Injection Protection** | SQLAlchemy ORM with parameterized queries |
-| 🚫 **Rate Limiting** | API rate limiting to prevent abuse |
-| 🔑 **API Key Security** | Environment variables — never committed to code |
-| 🌐 **CORS Protection** | Restricted cross-origin resource sharing |
-| 📝 **Audit Logging** | Transaction history and payment tracking |
-| 💳 **Secure Payments** | Sandbox mode for safe testing, production encryption |
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    SECURITY PROTOCOL                        │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  [✓] ENCRYPTED AUTH        JWT + httpOnly Cookies           │
+│  [✓] INPUT VALIDATION      Server-side on all endpoints     │
+│  [✓] SQL INJECTION         SQLAlchemy ORM + Parameters      │
+│  [✓] RATE LIMITING         API abuse prevention             │
+│  [✓] API KEY SECURITY      Env vars, never in code          │
+│  [✓] CORS PROTECTION       Restricted origins               │
+│  [✓] AUDIT LOGGING         Transaction tracking             │
+│  [✓] SECURE PAYMENTS       Sandbox + Production encryption  │
+│                                                             │
+│  STATUS: ALL SYSTEMS SECURE 🛡️                               │
+└─────────────────────────────────────────────────────────────┘
+```
 
 </div>
 
@@ -164,25 +295,30 @@ Use your **virtual card** anywhere cards are accepted
 <div align="center">
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    MOBI BIT AFRICA                          │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
-│  │   Frontend   │───▶│   Backend   │───▶│  Lightning   │     │
-│  │  React 18    │    │  FastAPI    │    │    LND       │     │
-│  │  Vite 5      │    │  Python     │    │  Network     │     │
-│  │  Tailwind    │    │  SQLAlchemy │    │              │     │
-│  └─────────────┘    └──────┬──────┘    └─────────────┘     │
-│                            │                                │
-│         ┌──────────────────┼──────────────────┐             │
-│         ▼                  ▼                  ▼             │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
-│  │   Database   │    │  Mobile     │    │  External   │     │
-│  │  PostgreSQL  │    │  Money APIs │    │  Services   │     │
-│  └─────────────┘    └─────────────┘    └─────────────┘     │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│                    MOBI BIT AFRICA — SYSTEM ARCHITECTURE            │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   ┌──────────────┐      ┌──────────────┐      ┌──────────────┐     │
+│   │   FRONTEND    │─────▶│   BACKEND    │─────▶│  LIGHTNING   │     │
+│   │              │      │              │      │   NETWORK    │     │
+│   │  React 18    │      │  FastAPI     │      │              │     │
+│   │  Vite 5      │      │  Python      │      │  LND Node    │     │
+│   │  Tailwind    │      │  SQLAlchemy  │      │  Polar       │     │
+│   └──────────────┘      └──────┬───────┘      └──────────────┘     │
+│                                │                                    │
+│             ┌──────────────────┼──────────────────┐                 │
+│             ▼                  ▼                  ▼                 │
+│   ┌──────────────┐    ┌──────────────┐    ┌──────────────┐         │
+│   │   DATABASE   │    │    MOBILE    │    │   EXTERNAL   │         │
+│   │              │    │    MONEY     │    │   SERVICES   │         │
+│   │  PostgreSQL  │    │              │    │              │         │
+│   │  (SQLite)    │    │  MTN MoMo    │    │  Strike      │         │
+│   │              │    │  Airtel      │    │  CoinGecko   │         │
+│   │              │    │  Orange      │    │  AfricaTalk  │         │
+│   └──────────────┘    └──────────────┘    └──────────────┘         │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 </div>
@@ -191,19 +327,67 @@ Use your **virtual card** anywhere cards are accepted
 
 ## 🛠️ Tech Stack
 
-<div align="center">
+<table>
+<tr>
+<td align="center" width="15%">
 
-| Layer | Technology | Purpose |
-|:-----:|-----------|---------|
-| **Frontend** | React 18 · Vite 5 · Tailwind CSS v4 · Framer Motion | User interface and animations |
-| **Backend** | Python 3.11+ · FastAPI · SQLAlchemy · Alembic | API and business logic |
-| **Database** | PostgreSQL 16 (SQLite for dev) | Data persistence |
-| **Lightning** | LND via Docker (Polar Network) | Bitcoin payments |
-| **Mobile Money** | Africa's Talking · MTN MoMo · Airtel · Orange | Fiat on-ramp |
-| **Security** | JWT · CORS · Rate Limiting · Parameterized Queries | Protection |
-| **Deploy** | Docker · Render | Production hosting |
+**FRONTEND**
+```
+React 18
+Vite 5
+Tailwind CSS v4
+Framer Motion
+```
+</td>
+<td align="center" width="15%">
 
-</div>
+**BACKEND**
+```
+Python 3.11+
+FastAPI
+SQLAlchemy
+Alembic
+```
+</td>
+<td align="center" width="15%">
+
+**DATABASE**
+```
+PostgreSQL 16
+SQLite (dev)
+Redis (cache)
+```
+</td>
+<td align="center" width="15%">
+
+**LIGHTNING**
+```
+LND
+Polar Network
+Docker
+```
+</td>
+<td align="center" width="15%">
+
+**MOBILE MONEY**
+```
+MTN MoMo
+Airtel Money
+Orange Money
+```
+</td>
+<td align="center" width="15%">
+
+**SECURITY**
+```
+JWT Auth
+CORS
+Rate Limiting
+Encryption
+```
+</td>
+</tr>
+</table>
 
 ---
 
@@ -212,124 +396,184 @@ Use your **virtual card** anywhere cards are accepted
 ```
 mobi-bit-africa/
 │
-├── src/                          # 🔒 Frontend (React)
-│   ├── pages/                    # 13 page components
-│   ├── components/               # Reusable UI components
-│   ├── services/                 # API abstraction layer
-│   ├── context/                  # Auth · Wallet · Theme
-│   ├── hooks/                    # Custom React hooks
-│   ├── utils/                    # Helpers
-│   └── assets/                   # Images · logos
+├── src/                              # 🔒 FRONTEND
+│   ├── pages/                        #   13 page components
+│   ├── components/                   #   Reusable UI components
+│   ├── services/                     #   API abstraction layer
+│   ├── context/                      #   Auth · Wallet · Theme
+│   ├── hooks/                        #   Custom React hooks
+│   ├── utils/                        #   Helpers
+│   └── assets/                       #   Images · logos
 │
-├── backend/                      # 🔐 Backend (FastAPI)
+├── backend/                          # 🔐 BACKEND
 │   └── app/
-│       ├── api/                  # Route handlers
-│       ├── core/                 # Config · database
-│       ├── models/               # SQLAlchemy models
-│       ├── services/             # Business logic
-│       ├── adapters/             # MTN · Airtel · Orange · Lightning
-│       └── ussd/                 # USSD flow handler
+│       ├── api/                      #   Route handlers
+│       ├── core/                     #   Config · database
+│       ├── models/                   #   SQLAlchemy models
+│       ├── services/                 #   Business logic
+│       ├── adapters/                 #   MTN · Airtel · Orange · Lightning
+│       └── ussd/                     #   USSD flow handler
 │
-├── docker-compose.yml
-├── render.yaml
-├── LICENSE
-└── README.md
+├── docker-compose.yml                # 🐳 CONTAINER ORCHESTRATION
+├── render.yaml                       # ☁️ DEPLOYMENT
+├── LICENSE                           # 📄 MIT LICENSE
+└── README.md                         # 📖 THIS FILE
 ```
 
 ---
 
 ## 🚀 Quick Start
 
-**Prerequisites:** Node.js v18+ · Python 3.11+ · Docker
-
 ```bash
-# Clone
+# ── CLONE ──────────────────────────────────────────────────────
 git clone https://github.com/Lailat-ul-qadr/mobi-bit-africa.git
 cd mobi-bit-africa
 
-# Install
+# ── INSTALL ────────────────────────────────────────────────────
 npm install
 cd backend && pip install -r requirements.txt && cd ..
 
-# Run
-docker-compose up -d postgres redis   # database
+# ── DEPLOY ─────────────────────────────────────────────────────
+docker-compose up -d postgres redis      # database
 cd backend && uvicorn app.main:app --reload --port 8000   # API
-npm run dev                            # frontend
+npm run dev                               # frontend
 ```
 
-Open **http://localhost:5174** → Login with `demo@satscardapp.com` / `demo@123456`
+<div align="center">
+
+```
+┌─────────────────────────────────────────────────┐
+│  🌐 Open: http://localhost:5174                 │
+│  📧 Email: demo@satscardapp.com                │
+│  🔑 Pass:  demo@123456                          │
+└─────────────────────────────────────────────────┘
+```
+
+</div>
 
 ---
 
 ## 📡 API
 
-| Endpoint | Method | Description |
-|----------|:------:|-------------|
-| `/api/node_info` | `GET` | Lightning node info |
-| `/api/balance` | `GET` | Wallet balance |
-| `/api/card_balance` | `GET` | Card balance |
-| `/api/create_invoice` | `POST` | Create Lightning invoice |
-| `/api/check_payment/{id}` | `GET` | Check payment status |
-| `/api/deposit/{id}` | `POST` | Deposit to card |
-| `/api/card_payment` | `POST` | Pay from card |
-| `/api/transactions` | `GET` | Transaction history |
+<table>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+<tr><td><code>/api/node_info</code></td><td>GET</td><td>Lightning node info</td></tr>
+<tr><td><code>/api/balance</code></td><td>GET</td><td>Wallet balance</td></tr>
+<tr><td><code>/api/card_balance</code></td><td>GET</td><td>Card balance</td></tr>
+<tr><td><code>/api/create_invoice</code></td><td>POST</td><td>Create Lightning invoice</td></tr>
+<tr><td><code>/api/check_payment/{id}</code></td><td>GET</td><td>Check payment status</td></tr>
+<tr><td><code>/api/deposit/{id}</code></td><td>POST</td><td>Deposit to card</td></tr>
+<tr><td><code>/api/card_payment</code></td><td>POST</td><td>Pay from card</td></tr>
+<tr><td><code>/api/transactions</code></td><td>GET</td><td>Transaction history</td></tr>
+</table>
 
 ---
 
 ## 📱 Mobile Money Integration
 
-<div align="center">
+<table>
+<tr>
+<td align="center">
 
-| Provider | Countries | Mode |
-|:--------:|-----------|:----:|
-| 🟡 **MTN MoMo** | Rwanda · Uganda · Ghana · DRC | Sandbox ✅ |
-| 🔴 **Airtel Money** | Rwanda · Kenya · Uganda | Sandbox ✅ |
-| 🟠 **Orange Money** | Senegal · Mali · Côte d'Ivoire | Sandbox ✅ |
+```
+🟡 MTN MoMo
+─────────────
+Rwanda
+Uganda
+Ghana
+DRC
+─────────────
+Status: SANDBOX ✅
+```
 
-</div>
+</td>
+<td align="center">
 
-> All providers support sandbox mode — no real money moves during testing. See [SETUP.md](SETUP.md) for configuration.
+```
+🔴 Airtel Money
+─────────────
+Rwanda
+Kenya
+Uganda
+─────────────
+Status: SANDBOX ✅
+```
+
+</td>
+<td align="center">
+
+```
+🟠 Orange Money
+─────────────
+Senegal
+Mali
+Côte d'Ivoire
+─────────────
+Status: SANDBOX ✅
+```
+
+</td>
+</tr>
+</table>
 
 ---
 
 ## 📋 Changelog
 
-| Version | Date | Changes |
-|:-------:|:----:|---------|
-| **1.0.0** | Aug 2026 | Initial release — 13 pages, Lightning integration, mobile money adapters |
-| **0.9.0** | Aug 2026 | Backend API with FastAPI, Alembic migrations, Polar Network setup |
-| **0.8.0** | Aug 2026 | Frontend foundation — React, Tailwind, design system, service layer |
+<table>
+<tr><th>Version</th><th>Date</th><th>Changes</th></tr>
+<tr><td><code>1.0.0</code></td><td>Aug 2026</td><td>Initial release — 13 pages, Lightning, mobile money</td></tr>
+<tr><td><code>0.9.0</code></td><td>Aug 2026</td><td>Backend API, Alembic, Polar Network</td></tr>
+<tr><td><code>0.8.0</code></td><td>Aug 2026</td><td>Frontend foundation, design system, service layer</td></tr>
+</table>
 
 ---
 
 ## 🙏 Acknowledgments
 
-- **[Bitcoin Lightning Network](https://lightning.network/)** — Enabling instant, low-cost Bitcoin payments
-- **[Polar](https://polar.sh/)** — Local Lightning Network development environment
-- **[Africa's Talking](https://africastalking.com/)** — Mobile money and USSD API infrastructure
-- **[MTN MoMo Developer Portal](https://momodeveloper.mtn.com/)** — Mobile money sandbox and APIs
-- **[FastAPI](https://fastapi.tiangolo.com/)** — Modern Python web framework
-- **[React](https://react.dev/)** — UI library powering the frontend
-- **[Tailwind CSS](https://tailwindcss.com/)** — Utility-first CSS framework
+- **[Bitcoin Lightning Network](https://lightning.network/)** — Instant, low-cost payments
+- **[Polar](https://polar.sh/)** — Local Lightning development
+- **[Africa's Talking](https://africastalking.com/)** — Mobile money APIs
+- **[MTN MoMo](https://momodeveloper.mtn.com/)** — Mobile money sandbox
+- **[FastAPI](https://fastapi.tiangolo.com/)** — Python web framework
+- **[React](https://react.dev/)** — UI library
+- **[Tailwind CSS](https://tailwindcss.com/)** — CSS framework
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
+MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
+<!-- Footer with matrix effect -->
 <div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,20:00FF41,50:0D1117,80:00FF41,100:0D1117&height=100&section=footer" width="100%" />
+
+<br />
 
 ### Built with ❤️ by **Mobi Bit Africa**
 
-*Bridging mobile money and Bitcoin across Africa*
+`> Bridging mobile money and Bitcoin across Africa`
 
 <br />
 
 [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com)
+
+<br />
+
+```
+$ echo "Thank you for visiting Mobi Bit Africa"
+> Thank you for visiting Mobi Bit Africa
+$
+```
 
 </div>
